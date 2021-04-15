@@ -43,6 +43,12 @@
     <Filter Include="文件帮助">
       <UniqueIdentifier>{1c57dac5-8d77-4e94-9dba-86e16edebc47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="控件帮助">
+      <UniqueIdentifier>{683707d9-e74b-4a96-ab64-9b29bcc90aea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="注入帮助">
+      <UniqueIdentifier>{30796ed5-db4e-43e4-9f77-5e8b5a3e6300}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PCManage.h">
@@ -93,6 +99,12 @@
     <ClInclude Include="FileHelper.h">
       <Filter>文件帮助</Filter>
     </ClInclude>
+    <ClInclude Include="SortListCtrl.h">
+      <Filter>控件帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="InjectionHelper.h">
+      <Filter>注入帮助</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PCManage.cpp">
@@ -133,6 +145,12 @@
     </ClCompile>
     <ClCompile Include="FileHelper.cpp">
       <Filter>文件帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="SortListCtrl.cpp">
+      <Filter>控件帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="InjectionHelper.cpp">
+      <Filter>注入帮助</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -49,6 +49,8 @@ BOOL FaRing3EnumProcessList(vector<PROCESS_TABLE_ENTRY_INFO>& ParameterData)
 				{
 					VirtualFree(v5, 0, MEM_RELEASE);
 				}
+
+
 				ParameterData.push_back(v1);
 
 

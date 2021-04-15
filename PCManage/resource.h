@@ -35,6 +35,8 @@
 #define ID_CHECK_FILE_ATTRIBUTES        32791
 #define ID_LOCATION_AT_EXPLORER         32792
 #define ID_SHOW_ALL_PROCESS_INFO        32793
+#define ID_EXPORT_TEXT                  32794
+#define ID_INJECT_MODULE_1              32795
 
 // Next default values for new objects
 // 

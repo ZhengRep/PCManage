@@ -1,0 +1,252 @@
+进程：249	应用层不可访问进程：13
+
+进程名称		进程ID		父进程ID		进程路径		应用层访问		文件厂商		文件描述		启动时间		
+[System Process]		0		0		获取进程完整路径失败		拒绝		信息缺失		信息缺失		信息缺失		
+System		4		0		获取进程完整路径失败		拒绝		信息缺失		信息缺失		信息缺失		
+winlogon.exe		92		872		C:\Windows\System32\winlogon.exe		??		Microsoft Corporation		Windows 登录应用程序		2021/04/15  21:44:49		
+Registry		120		4		获取进程完整路径失败		拒绝		信息缺失		信息缺失		信息缺失		
+smss.exe		448		4		C:\Windows\System32\smss.exe		拒绝		Microsoft Corporation		Windows 会话管理器		信息缺失		
+svchost.exe		512		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  22:17:11		
+svchost.exe		728		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+csrss.exe		776		760		C:\Windows\System32\csrss.exe		拒绝		Microsoft Corporation		Client Server Runtime Process		信息缺失		
+wininit.exe		880		760		C:\Windows\System32\wininit.exe		拒绝		Microsoft Corporation		Windows 启动应用程序		信息缺失		
+csrss.exe		888		872		C:\Windows\System32\csrss.exe		拒绝		Microsoft Corporation		Client Server Runtime Process		信息缺失		
+services.exe		952		880		C:\Windows\System32\services.exe		拒绝		Microsoft Corporation		服务和控制器应用		信息缺失		
+lsass.exe		960		880		C:\Windows\System32\lsass.exe		??		Microsoft Corporation		Local Security Authority Process		2021/04/15  21:44:49		
+svchost.exe		1032		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+fontdrvhost.exe		1056		92		C:\Windows\System32\fontdrvhost.exe		??		Microsoft Corporation		Usermode Font Driver Host		2021/04/15  21:44:50		
+fontdrvhost.exe		1064		880		C:\Windows\System32\fontdrvhost.exe		??		Microsoft Corporation		Usermode Font Driver Host		2021/04/15  21:44:50		
+WUDFHost.exe		1120		952		C:\Windows\System32\WUDFHost.exe		??		Microsoft Corporation		Windows 驱动程序基础 - 用户模式驱动程序框架主机进程		2021/04/15  21:44:50		
+svchost.exe		1184		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+svchost.exe		1232		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+svchost.exe		1304		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+dwm.exe		1316		92		C:\Windows\System32\dwm.exe		??		Microsoft Corporation		桌面窗口管理器		2021/04/15  21:44:50		
+PerfWatson2.exe		1328		19508		C:\vs2017\Common7\IDE\PerfWatson2.exe		??		Microsoft Corporation		PerfWatson2.exe		2021/04/15  22:49:09		
+svchost.exe		1388		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+svchost.exe		1412		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+svchost.exe		1420		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+svchost.exe		1428		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+ServiceHub.VSDetouredHost.exe		1440		20460		C:\vs2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.x86\ServiceHub.VSDetouredHost.exe		??		Microsoft		ServiceHub.Host.CLR.x86		2021/04/15  22:49:18		
+svchost.exe		1512		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+svchost.exe		1580		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+ServiceHub.TestWindowStoreHost.exe		1596		23044		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.AnyCPU\ServiceHub.TestWindowStoreHost.exe		??		Microsoft		ServiceHub.Host.CLR		2021/04/15  23:03:38		
+svchost.exe		1644		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+svchost.exe		1708		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+RuntimeBroker.exe		1724		1032		C:\Windows\System32\RuntimeBroker.exe		??		Microsoft Corporation		Runtime Broker		2021/04/15  21:47:27		
+svchost.exe		1740		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+RuntimeBroker.exe		1812		1032		C:\Windows\System32\RuntimeBroker.exe		??		Microsoft Corporation		Runtime Broker		2021/04/15  21:46:25		
+svchost.exe		1884		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+svchost.exe		1944		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+svchost.exe		1952		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+svchost.exe		1980		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+igfxCUIService.exe		2004		952		C:\Windows\System32\DriverStore\FileRepository\igdlh64.inf_amd64_842ac78a64ae7644\igfxCUIService.exe		??		Intel Corporation		igfxCUIService Module		2021/04/15  21:44:50		
+vcpkgsrv.exe		2148		19508		C:\vs2017\Common7\IDE\VC\vcpackages\vcpkgsrv.exe		??		Microsoft Corporation		Microsoft (R) Visual C++ Package Server		2021/04/15  23:24:29		
+svchost.exe		2160		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:50		
+NVDisplay.Container.exe		2188		952		C:\Program Files\NVIDIA Corporation\Display.NvContainer\NVDisplay.Container.exe		??		NVIDIA Corporation		NVIDIA Container		2021/04/15  21:44:51		
+LogiOptionsMgr.exe		2196		13148		C:\ProgramData\Logishrd\LogiOptions\Software\Current\LogiOptionsMgr.exe		??		Logitech, Inc.		LogiOptionsMgr.exe (UNICODE)		2021/04/15  21:47:28		
+svchost.exe		2212		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+SangforUDProtectEx.exe		2228		5284		C:\Program Files (x86)\Sangfor\SSL\SangforPWEx\SangforUDProtectEx.exe		??		Sangfor Technologies Inc.		SangforUD Protect Components		2021/04/15  21:46:15		
+svchost.exe		2248		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		2272		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		2300		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:15		
+svchost.exe		2372		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		2380		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		2480		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+PresentationFontCache.exe		2492		952		C:\Windows\Microsoft.NET\Framework64\v3.0\WPF\PresentationFontCache.exe		??		Microsoft Corporation		PresentationFontCache.exe		2021/04/15  21:46:15		
+svchost.exe		2508		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		2556		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		2564		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+WUDFHost.exe		2620		952		C:\Windows\System32\WUDFHost.exe		??		Microsoft Corporation		Windows 驱动程序基础 - 用户模式驱动程序框架主机进程		2021/04/15  21:44:51		
+Memory Compression		2656		4		获取进程完整路径失败		拒绝		信息缺失		信息缺失		信息缺失		
+svchost.exe		2700		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		2712		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:15		
+svchost.exe		2800		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		2808		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		2816		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+sihost.exe		2860		2248		C:\Windows\System32\sihost.exe		??		Microsoft Corporation		Shell Infrastructure Host		2021/04/15  21:46:15		
+svchost.exe		2924		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:15		
+svchost.exe		3044		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+clover.exe		3060		6180		D:\ownApp1\clover\clover.exe		??		EJIE Technology		Clover		2021/04/15  23:21:58		
+svchost.exe		3088		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		3112		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		3136		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+QQExternal.exe		3272		23504		C:\Program Files (x86)\Tencent\QQ\Bin\QQExternal.exe		??		Tencent		腾讯QQ辅助进程		2021/04/15  22:38:37		
+svchost.exe		3332		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		3356		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		3364		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+taskhostw.exe		3384		2508		C:\Windows\System32\taskhostw.exe		??		Microsoft Corporation		Windows 任务的主机进程		2021/04/15  21:46:15		
+ZhuDongFangYu.exe		3464		952		D:\ownApp1\360\360Safe\deepscan\ZhuDongFangYu.exe		??		360.cn		360主动防御服务模块		2021/04/15  21:44:51		
+svchost.exe		3516		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		3684		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:51		
+svchost.exe		3808		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:52		
+svchost.exe		3844		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:52		
+svchost.exe		3856		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:15		
+AsLdrSrv64.exe		3864		952		C:\Windows\System32\DriverStore\FileRepository\atkwmiacpiio.inf_amd64_30ffacb41f78f352\AsLdrSrv64.exe		??		ASUSTek Computer Inc.		0004b0		2021/04/15  21:44:52		
+spoolsv.exe		3992		952		C:\Windows\System32\spoolsv.exe		??		Microsoft Corporation		后台处理程序子系统应用		2021/04/15  21:44:52		
+dasHost.exe		4056		2816		C:\Windows\System32\dasHost.exe		??		Microsoft Corporation		Device Association Framework Provider Host		2021/04/15  21:44:52		
+RuntimeBroker.exe		4068		1032		C:\Windows\System32\RuntimeBroker.exe		??		Microsoft Corporation		Runtime Broker		2021/04/15  21:47:00		
+svchost.exe		4168		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:52		
+mDNSResponder.exe		4220		952		C:\Program Files\Bonjour\mDNSResponder.exe		??		Apple Inc.		Bonjour Service		2021/04/15  21:44:53		
+CAJSHost.exe		4248		952		C:\Program Files (x86)\TTKN\CAJVD\CAJSHost.exe		??		Tongfang Knowledge Network Technology(Beijing) Co., Ltd.		TTKN?CAJHost		2021/04/15  21:44:53		
+svchost.exe		4260		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:53		
+svchost.exe		4292		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:52		
+vcpkgsrv.exe		4412		19260		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\IDE\VC\vcpackages\vcpkgsrv.exe		??		Microsoft Corporation		Microsoft (R) Visual C++ Package Server		2021/04/15  23:28:28		
+ctfmon.exe		4720		3856		C:\Windows\System32\ctfmon.exe		??		Microsoft Corporation		CTF 加载程序		2021/04/15  21:46:15		
+ChsIME.exe		4856		1032		C:\Windows\System32\InputMethod\CHS\ChsIME.exe		??		Microsoft Corporation		Microsoft IME		2021/04/15  21:46:16		
+conhost.exe		5020		23856		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  23:01:38		
+svchost.exe		5096		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:45:03		
+AsHidSrv64.exe		5112		952		C:\Windows\System32\DriverStore\FileRepository\atkwmiacpiio.inf_amd64_30ffacb41f78f352\AsHidSrv64.exe		??		ASUSTek Computer Inc.		ASUS HID Access Service		2021/04/15  21:44:53		
+IntelCpHDCPSvc.exe		5124		952		C:\Windows\System32\DriverStore\FileRepository\igdlh64.inf_amd64_842ac78a64ae7644\IntelCpHDCPSvc.exe		??		Intel Corporation		Intel HD Graphics Drivers for Windows(R)		2021/04/15  21:44:53		
+svchost.exe		5136		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:53		
+AppleMobileDeviceService.exe		5156		952		C:\Program Files\Common Files\Apple\Mobile Device Support\AppleMobileDeviceService.exe		??		Apple Inc.		MobileDeviceService		2021/04/15  21:44:53		
+RtkBtManServ.exe		5172		952		C:\Windows\RtkBtManServ.exe		??		Realtek Semiconductor Corp.		Realtek Bluetooth BTDevManager Service Application		2021/04/15  21:44:53		
+svchost.exe		5184		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:53		
+svchost.exe		5192		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:53		
+svchost.exe		5208		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:53		
+ICEsoundService64.exe		5224		952		C:\Windows\System32\ICEsoundService64.exe		??		ICEpower		ICEpower ICEsound APO service		2021/04/15  21:44:53		
+NvTelemetryContainer.exe		5232		952		C:\Program Files\NVIDIA Corporation\NvTelemetry\NvTelemetryContainer.exe		??		NVIDIA Corporation		NVIDIA Container		2021/04/15  21:44:53		
+sqlservr.exe		5244		952		C:\ProgramData\SOLIDWORKS Electrical\MSSQL12.TEW_SQLEXPRESS\MSSQL\Binn\sqlservr.exe		??		Microsoft Corporation		SQL Server Windows NT - 64 Bit		2021/04/15  21:44:53		
+svchost.exe		5252		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:53		
+svchost.exe		5260		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:53		
+SangforPromoteService.exe		5268		952		C:\Program Files (x86)\Sangfor\SSL\Promote\SangforPromoteService.exe		??		Sangfor Technologies Inc.		Promote Service		2021/04/15  21:44:53		
+esif_uf.exe		5276		952		C:\Windows\System32\DriverStore\FileRepository\dptf_cpu.inf_amd64_82b77f8c4618e2d0\esif_uf.exe		??		Intel Corporation		Intel(R) Dynamic Tuning Service		2021/04/15  21:44:53		
+SangforPWEx.exe		5284		952		C:\Program Files (x86)\Sangfor\SSL\SangforPWEx\SangforPWEx.exe		??		Sangfor Technologies Inc.		Sangfor VPN Security Protect Service		2021/04/15  21:44:53		
+OfficeClickToRun.exe		5300		952		C:\Program Files\Common Files\microsoft shared\ClickToRun\OfficeClickToRun.exe		??		Microsoft Corporation		Microsoft Office Click-to-Run (SxS)		2021/04/15  21:44:53		
+QQProtect.exe		5308		952		C:\Program Files (x86)\Common Files\Tencent\QQProtect\Bin\QQProtect.exe		??		Tencent		QQ安全防护进程（Q盾）		2021/04/15  21:44:53		
+FNPLicensingService64.exe		5384		952		C:\Program Files\Common Files\Macrovision Shared\FlexNet Publisher\FNPLicensingService64.exe		??		Flexera Software LLC		Activation Licensing Service		2021/04/15  21:44:53		
+svchost.exe		5396		952		C:\Windows\SysWOW64\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:53		
+mysqld.exe		5448		952		C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe		??		信息缺失		0004e4		2021/04/15  21:44:53		
+FNPLicensingService.exe		5456		952		C:\Program Files (x86)\Common Files\Macrovision Shared\FlexNet Publisher\FNPLicensingService.exe		??		Flexera Software LLC		Activation Licensing Service		2021/04/15  21:44:53		
+sqlwriter.exe		5464		952		C:\Program Files\Microsoft SQL Server\90\Shared\sqlwriter.exe		??		Microsoft Corporation		SQL Server VSS Writer - 64 Bit		2021/04/15  21:44:53		
+sqlbrowser.exe		5480		952		C:\Program Files (x86)\Microsoft SQL Server\90\Shared\sqlbrowser.exe		??		Microsoft Corporation		SQL Browser Service EXE		2021/04/15  21:44:53		
+httpd.exe		5488		952		D:\Service\Apache24\bin\httpd.exe		??		Apache Software Foundation		Apache HTTP Server		2021/04/15  21:44:53		
+svchost.exe		5504		952		C:\Windows\System32\svchost.exe		拒绝		Microsoft Corporation		Windows 服务主进程		信息缺失		
+TeamViewer_Service.exe		5516		952		C:\Program Files (x86)\TeamViewer\TeamViewer_Service.exe		??		TeamViewer Germany GmbH		TeamViewer		2021/04/15  21:44:53		
+acrotray.exe		5612		14652		C:\Program Files (x86)\Adobe\Acrobat DC\Acrobat\acrotray.exe		??		Adobe Systems Inc.		AcroTray		2021/04/15  21:54:03		
+SWVisualize.BoostService.exe		5644		952		D:\ownApp1\solidworks\SOLIDWORKS Visualize Boost\SWVisualize.BoostService.exe		??		Dassault Systèmes		VizBoostService		2021/04/15  21:44:53		
+SWVisualize.Queue.Server.exe		5676		952		D:\ownApp1\solidworks\SOLIDWORKS Visualize\SWVisualize.Queue.Server.exe		??		Dassault Systèmes		SOLIDWORKS Visualize Queue Server		2021/04/15  21:44:53		
+svchost.exe		5700		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:54		
+svchost.exe		5760		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:54		
+jhi_service.exe		5804		952		C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL\jhi_service.exe		??		Intel Corporation		Intel(R) Dynamic Application Loader Host Interface		2021/04/15  21:47:03		
+EwServer.exe		5836		952		D:\ownApp1\solidworks\SOLIDWORKS Electrical\server\EwServer.exe		??				EwServer.exe		2021/04/15  21:44:54		
+remotesolverdispatcherservice.exe		5864		952		D:\ownApp1\solidworks\SOLIDWORKS Flow Simulation\binCFW\remotesolverdispatcherservice.exe		??		Mentor Graphics Corporation		Dispatcher service		2021/04/15  21:44:54		
+IntelCpHeciSvc.exe		5884		952		C:\Windows\System32\DriverStore\FileRepository\igdlh64.inf_amd64_842ac78a64ae7644\IntelCpHeciSvc.exe		??		Intel Corporation		IntelCpHeciSvc Executable		2021/04/15  21:44:54		
+svchost.exe		5920		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:54		
+explorer.exe		6180		5936		C:\Windows\explorer.exe		??		Microsoft Corporation		Windows 资源管理器		2021/04/15  21:46:16		
+svchost.exe		6220		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  22:17:08		
+dispatcher.exe		6552		5864		D:\ownApp1\solidworks\SOLIDWORKS Flow Simulation\binCFW\dispatcher.exe		??		Mentor Graphics Corporation		FloEFD Remote Solver Dispatcher		2021/04/15  21:44:54		
+conhost.exe		6564		6552		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  21:44:54		
+mysqld.exe		6684		5448		C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe		??		信息缺失		0004e4		2021/04/15  21:44:54		
+conhost.exe		6692		6684		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  21:44:54		
+NVDisplay.Container.exe		6784		2188		C:\Program Files\NVIDIA Corporation\Display.NvContainer\NVDisplay.Container.exe		??		NVIDIA Corporation		NVIDIA Container		2021/04/15  21:45:51		
+vcpkgsrv.exe		6912		19508		C:\vs2017\Common7\IDE\VC\vcpackages\vcpkgsrv.exe		??		Microsoft Corporation		Microsoft (R) Visual C++ Package Server		2021/04/15  23:21:13		
+ServiceHub.SettingsHost.exe		7240		20460		C:\vs2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.x86\ServiceHub.SettingsHost.exe		??		Microsoft		ServiceHub.Host.CLR.x86		2021/04/15  22:49:38		
+svchost.exe		7328		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:16		
+conhost.exe		7816		1596		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  23:03:38		
+Everything.exe		7924		18896		C:\Program Files\Everything\Everything.exe		??		voidtools		Everything		2021/04/15  22:36:41		
+svchost.exe		7932		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  23:28:21		
+svchost.exe		8208		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:56		
+httpd.exe		8296		5488		D:\Service\Apache24\bin\httpd.exe		??		Apache Software Foundation		Apache HTTP Server		2021/04/15  21:44:57		
+svchost.exe		8520		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:57		
+ECAgent.exe		8568		5268		C:\Program Files (x86)\Sangfor\SSL\ECAgent\ECAgent.exe		??		Sangfor Technologies Inc.		Agent for EasyConnect		2021/04/15  21:46:17		
+svchost.exe		8604		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:44:57		
+VaCodeInspectionsServer.exe		9136		19260		C:\Users\ASUS\AppData\Local\Microsoft\VisualStudio\16.0_5ce04d0e\Extensions\oo4uhs4d.ya0\VaCodeInspectionsServer.exe		??		Whole Tomato Software, Inc.		VaCodeInspectionsServer		2021/04/15  23:02:00		
+svchost.exe		9172		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:15		
+igfxEM.exe		9472		2004		C:\Windows\System32\DriverStore\FileRepository\igdlh64.inf_amd64_842ac78a64ae7644\igfxEM.exe		??		Intel Corporation		igfxEM Module		2021/04/15  21:46:15		
+RuntimeBroker.exe		9508		1032		C:\Windows\System32\RuntimeBroker.exe		??		Microsoft Corporation		Runtime Broker		2021/04/15  21:48:53		
+AsMonStartupTask64.exe		9532		3864		C:\Windows\System32\DriverStore\FileRepository\atkwmiacpiio.inf_amd64_30ffacb41f78f352\AsMonStartupTask64.exe		??		ASUSTek Computer Inc.		0004b0		2021/04/15  21:46:15		
+conhost.exe		9628		20548		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  23:01:37		
+svchost.exe		9812		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  22:00:24		
+svchost.exe		9888		952		C:\Windows\System32\svchost.exe		拒绝		Microsoft Corporation		Windows 服务主进程		信息缺失		
+ServiceHub.SettingsHost.exe		9940		23044		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.x86\ServiceHub.SettingsHost.exe		??		Microsoft		ServiceHub.Host.CLR.x86		2021/04/15  23:02:01		
+vcpkgsrv.exe		10032		19260		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\IDE\VC\vcpackages\vcpkgsrv.exe		??		Microsoft Corporation		Microsoft (R) Visual C++ Package Server		2021/04/15  23:27:36		
+WmiPrvSE.exe		10100		1032		C:\Windows\System32\wbem\WmiPrvSE.exe		??		Microsoft Corporation		WMI Provider Host		2021/04/15  22:58:55		
+vcpkgsrv.exe		10152		19508		C:\vs2017\Common7\IDE\VC\vcpackages\vcpkgsrv.exe		??		Microsoft Corporation		Microsoft (R) Visual C++ Package Server		2021/04/15  23:24:26		
+svchost.exe		10216		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:45:51		
+SgrmBroker.exe		10260		952		C:\Windows\System32\SgrmBroker.exe		拒绝		Microsoft Corporation		System Guard 运行时监视器代理服务		信息缺失		
+svchost.exe		10300		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:17		
+StartMenuExperienceHost.exe		10344		1032		C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe		??		信息缺失		信息缺失		2021/04/15  21:46:24		
+AsusHWCenter64.exe		10408		2080		C:\Program Files (x86)\ASUS\ASUS Touchpad Handwriting\Exe\x64\AsusHWCenter64.exe		??		ASUSTeK Computer Inc.		ASUS Touchpad Handwriting Center		2021/04/15  21:46:18		
+svchost.exe		10416		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:18		
+TGitCache.exe		10436		23504		C:\Program Files\TortoiseGit\bin\TGitCache.exe		??		https://tortoisegit.org/		TortoiseGit status cache		2021/04/15  22:55:01		
+conhost.exe		10556		20460		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  22:49:16		
+MSBuild.exe		10608		19260		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\MSBuild\Current\Bin\MSBuild.exe		??		Microsoft Corporation		MSBuild.exe		2021/04/15  23:29:09		
+RuntimeBroker.exe		10768		1032		C:\Windows\System32\RuntimeBroker.exe		??		Microsoft Corporation		Runtime Broker		2021/04/15  21:46:26		
+vcpkgsrv.exe		10844		19260		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\IDE\VC\vcpackages\vcpkgsrv.exe		??		Microsoft Corporation		Microsoft (R) Visual C++ Package Server		2021/04/15  23:27:47		
+svchost.exe		10860		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:22		
+360tray.exe		10960		3464		D:\ownApp1\360\360Safe\safemon\360tray.exe		??		360.cn		360安全卫士 安全防护中心模块		2021/04/15  21:46:23		
+SearchIndexer.exe		11092		952		C:\Windows\System32\SearchIndexer.exe		??		Microsoft Corporation		Microsoft Windows Search 索引器		2021/04/15  21:46:23		
+svchost.exe		11292		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  22:37:23		
+RemindersServer.exe		11568		1032		C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy\RemindersServer.exe		??		Microsoft Corporation		Reminders WinRT OOP Server		2021/04/15  21:46:26		
+svchost.exe		11688		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:27		
+svchost.exe		11740		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:47:04		
+SettingSyncHost.exe		11860		1032		C:\Windows\System32\SettingSyncHost.exe		??		Microsoft Corporation		Host Process for Setting Synchronization		2021/04/15  21:46:27		
+WindowsInternal.ComposableShell.Experiences.TextInput.InputApp.exe		11896		1032		C:\Windows\SystemApps\InputApp_cw5n1h2txyewy\WindowsInternal.ComposableShell.Experiences.TextInput.InputApp.exe		??		Microsoft Corporation		WindowsInternal.ComposableShell.Experiences.TextInput.InputApp.exe		2021/04/15  21:46:27		
+BhcMgr.exe		12484		6180		C:\Program Files\WindowsApps\B9ECED6F.ASUSBatteryHealthCharging_1.0.7.0_x86__qmba6cd70vzyy\ASUS Battery Health Charging\BhcMgr.exe		??		ASUSTek Computer Inc.		0004b0		2021/04/15  21:46:41		
+conhost.exe		12592		9940		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  23:02:01		
+svchost.exe		12596		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  22:17:08		
+SearchUI.exe		12656		1032		C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy\SearchUI.exe		??		Microsoft Corporation		Search and Cortana application		2021/04/15  21:46:45		
+LogiOverlay.exe		12724		13148		C:\ProgramData\Logishrd\LogiOptions\Software\Current\LogiOverlay.exe		??		Logitech		Logi Overlay		2021/04/15  21:47:28		
+conhost.exe		12728		19824		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  23:03:32		
+SecurityHealthSystray.exe		12880		6180		C:\Windows\System32\SecurityHealthSystray.exe		??		Microsoft Corporation		Windows Security notification icon		2021/04/15  21:46:37		
+SecurityHealthService.exe		12920		952		C:\Windows\System32\SecurityHealthService.exe		拒绝		Microsoft Corporation		Windows Security Health Service		信息缺失		
+HControl.exe		13092		6180		C:\Program Files\WindowsApps\B9ECED6F.ASUSKeyboardHotkeys_1.0.12.0_x86__qmba6cd70vzyy\ATK Package\HControl.exe		??		ASUSTek Computer Inc.		HControl		2021/04/15  21:46:42		
+vcpkgsrv.exe		13108		19260		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\IDE\VC\vcpackages\vcpkgsrv.exe		??		Microsoft Corporation		Microsoft (R) Visual C++ Package Server		2021/04/15  23:27:51		
+LogiOptions.exe		13148		6180		C:\Program Files\Logitech\LogiOptions\LogiOptions.exe		??		Logitech, Inc.		LogiOptions.exe (UNICODE)		2021/04/15  21:47:28		
+svchost.exe		13216		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:41		
+yundetectservice.exe		13240		6180		D:\BaiduNetdisk\yundetectservice.exe		??		信息缺失		信息缺失		2021/04/15  21:46:38		
+svchost.exe		13248		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:46:38		
+Snipaste.exe		13260		6180		D:\WindowsApps\45479liulios.17062D84F7C46_2.5.60.0_x64__p7pnf6hceqser\Snipaste.exe		??		Le Liu		Snipaste		2021/04/15  21:46:44		
+LMS.exe		13528		952		C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\LMS\LMS.exe		??		Intel Corporation		Intel(R) Local Management Service		2021/04/15  21:47:03		
+svchost.exe		13908		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:47:04		
+TGitCache.exe		14024		7924		C:\Program Files\TortoiseGit\bin\TGitCache.exe		??		https://tortoisegit.org/		TortoiseGit status cache		2021/04/15  22:37:32		
+conhost.exe		14144		19932		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  23:01:56		
+conhost.exe		14448		10608		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  23:29:09		
+dllhost.exe		14956		1032		C:\Windows\System32\dllhost.exe		??		Microsoft Corporation		COM Surrogate		2021/04/15  21:52:59		
+svchost.exe		15036		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:53:16		
+explorer.exe		15660		1032		C:\Windows\explorer.exe		??		Microsoft Corporation		Windows 资源管理器		2021/04/15  23:22:01		
+Microsoft.Alm.Shared.Remoting.RemoteContainer.dll		16496		19260		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\IDE\PrivateAssemblies\Microsoft.Alm.Shared.Remoting.RemoteContainer.dll		??		Microsoft Corporation		Microsoft.Alm.Shared.Remoting.RemoteContainer.dll		2021/04/15  23:02:20		
+Microsoft.Photos.exe		16560		1032		C:\Program Files\WindowsApps\Microsoft.Windows.Photos_2020.20120.4004.0_x64__8wekyb3d8bbwe\Microsoft.Photos.exe		??		信息缺失		0004b0		2021/04/15  22:17:07		
+vcpkgsrv.exe		16616		19260		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\IDE\VC\vcpackages\vcpkgsrv.exe		??		Microsoft Corporation		Microsoft (R) Visual C++ Package Server		2021/04/15  23:27:23		
+Taskmgr.exe		16892		6180		C:\Windows\System32\Taskmgr.exe		??		Microsoft Corporation		任务管理器		2021/04/15  23:31:20		
+vcpkgsrv.exe		17092		19508		C:\vs2017\Common7\IDE\VC\vcpackages\vcpkgsrv.exe		??		Microsoft Corporation		Microsoft (R) Visual C++ Package Server		2021/04/15  23:21:14		
+svchost.exe		17108		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  22:02:03		
+ShellExperienceHost.exe		17172		1032		C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy\ShellExperienceHost.exe		??		Microsoft Corporation		Windows Shell Experience Host		2021/04/15  21:48:53		
+SystemSettings.exe		17176		1032		C:\Windows\ImmersiveControlPanel\SystemSettings.exe		??		Microsoft Corporation		设置		2021/04/15  21:53:10		
+ATKOSD2.exe		17284		17296		C:\Windows\System32\DriverStore\FileRepository\atkwmiacpiio.inf_amd64_30ffacb41f78f352\ATKOSD2.exe		??		ASUSTek Computer Inc.		0004b0		2021/04/15  21:47:43		
+ServiceHub.Host.CLR.x86.exe		17312		20460		C:\vs2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.x86\ServiceHub.Host.CLR.x86.exe		??		Microsoft		ServiceHub.Host.CLR.x86		2021/04/15  22:49:28		
+svchost.exe		17640		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  22:12:26		
+cl.exe		17856		19260		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\VC\Tools\MSVC\14.28.29333\bin\Hostx86\x86\cl.exe		??		Microsoft Corporation		Microsoft? C-C++ Compiler Driver		2021/04/15  23:31:01		
+svchost.exe		18084		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  21:48:53		
+ApplicationFrameHost.exe		18804		1032		C:\Windows\System32\ApplicationFrameHost.exe		??		Microsoft Corporation		Application Frame Host		2021/04/15  21:53:10		
+Everything.exe		18896		6180		C:\Program Files\Everything\Everything.exe		??		voidtools		Everything		2021/04/15  22:36:40		
+devenv.exe		19260		23652		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\IDE\devenv.exe		??		Microsoft Corporation		Microsoft Visual Studio 2019		2021/04/15  23:01:28		
+WINWORD.EXE		19396		14652		C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE		??		Microsoft Corporation		Microsoft Word		2021/04/15  21:54:08		
+devenv.exe		19508		6180		C:\vs2017\Common7\IDE\devenv.exe		??		Microsoft Corporation		Microsoft Visual Studio 2017		2021/04/15  22:48:46		
+conhost.exe		19540		17856		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  23:31:01		
+ServiceHub.Host.CLR.x86.exe		19824		23044		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.x86\ServiceHub.Host.CLR.x86.exe		??		Microsoft		ServiceHub.Host.CLR.x86		2021/04/15  23:03:32		
+RuntimeBroker.exe		19904		1032		C:\Windows\System32\RuntimeBroker.exe		??		Microsoft Corporation		Runtime Broker		2021/04/15  22:31:29		
+ServiceHub.IdentityHost.exe		19932		23044		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.x86\ServiceHub.IdentityHost.exe		??		Microsoft		ServiceHub.Host.CLR.x86		2021/04/15  23:01:56		
+ServiceHub.Host.Node.x86.exe		20460		19508		C:\vs2017\Common7\ServiceHub\Hosts\ServiceHub.Host.Node.x86\ServiceHub.Host.Node.x86.exe		??		Node.js		Node.js: Server-side JavaScript		2021/04/15  22:49:16		
+ServiceHub.ThreadedWaitDialog.exe		20548		23044		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.x86\ServiceHub.ThreadedWaitDialog.exe		??		Microsoft		ServiceHub.Host.CLR.x86		2021/04/15  23:01:37		
+mspdbsrv.exe		20804		1692		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\VC\Tools\MSVC\14.28.29333\bin\Hostx86\x86\mspdbsrv.exe		??		Microsoft Corporation		Microsoft? Program Database		2021/04/15  23:30:52		
+TXPlatform.exe		21036		1032		C:\Program Files (x86)\Tencent\QQ\Bin\TXPlatform.exe		??		Tencent		腾讯QQ辅助进程		2021/04/15  22:12:36		
+PerfWatson2.exe		21224		19260		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\IDE\PerfWatson2.exe		??		Microsoft Corporation		PerfWatson2.exe		2021/04/15  23:01:33		
+RuntimeBroker.exe		21456		1032		C:\Windows\System32\RuntimeBroker.exe		??		Microsoft Corporation		Runtime Broker		2021/04/15  22:16:17		
+explorer.exe		21652		1032		C:\Windows\explorer.exe		??		Microsoft Corporation		Windows 资源管理器		2021/04/15  23:05:09		
+PCManage.exe		21704		19260		D:\DeskTop\PCManage\PCManage\Debug\PCManage.exe		??		TODO: <公司名>		PCManage		2021/04/15  23:30:59		
+ServiceHub.IdentityHost.exe		22144		20460		C:\vs2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.x86\ServiceHub.IdentityHost.exe		??		Microsoft		ServiceHub.Host.CLR.x86		2021/04/15  22:49:21		
+conhost.exe		22416		22860		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  21:58:11		
+Video.UI.exe		22724		1032		C:\Program Files\WindowsApps\Microsoft.ZuneVideo_10.21021.10311.0_x64__8wekyb3d8bbwe\Video.UI.exe		??		信息缺失		0004b0		2021/04/15  22:16:15		
+updater.exe		22860		2196		C:\ProgramData\Logishrd\LogiOptions\Software\Current\updater.exe		??		Logitech, Inc.		Updater.exe (UNICODE)		2021/04/15  21:58:11		
+Microsoft.ServiceHub.Controller.exe		23044		19260		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\ServiceHub\controller\Microsoft.ServiceHub.Controller.exe		??		Microsoft		Microsoft.ServiceHub.Controller		2021/04/15  23:01:36		
+conhost.exe		23064		23888		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  23:02:05		
+SearchFilterHost.exe		23288		11092		C:\Windows\System32\SearchFilterHost.exe		??		Microsoft Corporation		Microsoft Windows Search Filter Host		2021/04/15  23:30:07		
+svchost.exe		23480		952		C:\Windows\System32\svchost.exe		??		Microsoft Corporation		Windows 服务主进程		2021/04/15  22:17:08		
+QQ.exe		23504		4960		C:\Program Files (x86)\Tencent\QQ\Bin\QQ.exe		??		Tencent		腾讯QQ		2021/04/15  22:12:33		
+SearchProtocolHost.exe		23716		11092		C:\Windows\System32\SearchProtocolHost.exe		??		Microsoft Corporation		Microsoft Windows Search Protocol Host		2021/04/15  23:22:52		
+taskhostw.exe		23764		2508		C:\Windows\System32\taskhostw.exe		??		Microsoft Corporation		Windows 任务的主机进程		2021/04/15  22:37:30		
+ServiceHub.VSDetouredHost.exe		23856		23044		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.x86\ServiceHub.VSDetouredHost.exe		??		Microsoft		ServiceHub.Host.CLR.x86		2021/04/15  23:01:37		
+ServiceHub.Host.CLR.x86.exe		23888		23044		C:\Program Files (x86)\Microsoft Visual Studio\2019\2017\Common7\ServiceHub\Hosts\ServiceHub.Host.CLR.x86\ServiceHub.Host.CLR.x86.exe		??		Microsoft		ServiceHub.Host.CLR.x86		2021/04/15  23:02:05		
+VaCodeInspectionsServer.exe		23896		19508		C:\Users\ASUS\AppData\Local\Microsoft\VisualStudio\15.0_027fac4d\Extensions\aodkltys.pri\VaCodeInspectionsServer.exe		??		Whole Tomato Software, Inc.		VaCodeInspectionsServer		2021/04/15  22:49:41		
+conhost.exe		24048		23044		C:\Windows\System32\conhost.exe		??		Microsoft Corporation		控制台窗口主进程		2021/04/15  23:01:36		

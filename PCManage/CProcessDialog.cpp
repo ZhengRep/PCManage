@@ -48,6 +48,8 @@ BEGIN_MESSAGE_MAP(CProcessDialog, CDialogEx)
 	ON_COMMAND(ID_COPY_IMAGE_PATH, &CProcessDialog::OnCopyImagePath)
 	ON_COMMAND(ID_CHECK_FILE_ATTRIBUTES, &CProcessDialog::OnCheckFileAttributes)
 	ON_COMMAND(ID_LOCATION_AT_EXPLORER, &CProcessDialog::OnLocationAtExplorer)
+	ON_COMMAND(ID_EXPORT_TEXT, &CProcessDialog::OnExportText)
+	ON_COMMAND(ID_INJECT_MODULE_1, &CProcessDialog::OnInjectModule1)
 END_MESSAGE_MAP()
 
 
@@ -270,6 +272,20 @@ void CProcessDialog::OnNMRClickProcessList(NMHDR* pNMHDR, LRESULT* pResult)
 	Menu.AppendMenu(MF_STRING, ID_CHECK_FILE_ATTRIBUTES, _T("查看进程文件属性"));
 	Menu.AppendMenu(MF_STRING, ID_LOCATION_AT_EXPLORER, _T("在资源管理器中定位文件"));
 	Menu.AppendMenu(MF_SEPARATOR);
+	Menu.AppendMenu(MF_STRING, ID_CHECK_FILE_ATTRIBUTES, _T("查看进程文件属性"));
+	Menu.AppendMenu(MF_STRING, ID_LOCATION_AT_EXPLORER, _T("在资源管理器中定位文件"));
+	Menu.AppendMenu(MF_SEPARATOR);
+
+	CMenu SubMenu1;
+	SubMenu1.CreatePopupMenu();
+	SubMenu1.AppendMenu(MF_STRING, ID_EXPORT_TEXT, _T("文本表格"));
+	Menu.AppendMenu(MF_POPUP, (UINT)SubMenu1.m_hMenu, _T("导出到..."));
+
+
+	CMenu SubMenu2;
+	SubMenu2.CreatePopupMenu();
+	SubMenu2.AppendMenu(MF_STRING, ID_INJECT_MODULE_1, _T("远程线程"));
+	Menu.AppendMenu(MF_POPUP, (UINT)SubMenu2.m_hMenu, _T("注入模块..."));
 
 	if (!m_ProcessCListCtrl.GetItemCount())
 	{
@@ -395,6 +411,66 @@ void CProcessDialog::OnLocationAtExplorer()
 		ImagePath = m_ProcessCListCtrl.GetItemText(SelectedItem, 3);
 	}
 	FaLocationExplorer(ImagePath);
+}
+void CProcessDialog::OnExportText()
+{
+	FaExportListToTxt(&m_ProcessCListCtrl,m_TotalCStatic);
+}
+void CProcessDialog::OnInjectModule1()
+{
+	HANDLE ProcessIdentify = 0;
+
+
+	int SelectedItem = FaGetSelectedItem(&m_ProcessCListCtrl);
+	if (SelectedItem == -1)
+	{
+		return;
+	}
+
+	PPROCESS_TABLE_ENTRY_INFO v1 = FaGetProcessInfoByItem(SelectedItem);
+	if (!v1)
+	{
+		return;
+	}
+
+	ProcessIdentify = v1->ProcessIdentify;
+
+	if (ProcessIdentify == 0)
+	{
+		return;
+	}
+
+	//取钱框
+
+	TCHAR v2[] = { 'I','n','j','e','c','t',' ','D','L','L','\0' };
+	TCHAR v3[] = { 'D','L','L',' ','F','i','l','e','s','(','*','.','d','l','l',')','\0','*','.','d','l','l','\0','A','l','l',' ','F','i','l','e','s','(','*','.','*',')','\0','*','.','*','\0','\0','\0' };
+
+	CFileDialog FileDialog(TRUE);
+	FileDialog.m_ofn.lpstrTitle = v2;
+	FileDialog.m_ofn.lpstrFilter = v3;
+
+	if (IDOK != FileDialog.DoModal())
+	{
+		return;
+	}
+
+	CString v5 = FileDialog.GetPathName();
+	if (PathFileExists(v5))
+	{
+		TCHAR v1[MAX_PATH] = { 0 };
+		_tcsncpy_s(v1, v5.GetBuffer(), v5.GetLength());
+		v5.ReleaseBuffer();
+
+		if (!FaInjectModule1(v1, ProcessIdentify))
+		{
+			::MessageBox(NULL, _T("注入模块失败!"), _T("PCManager"), MB_OK | MB_ICONINFORMATION);
+			//MessageBox(_T("注入模块失败!"), _T("PCManager"), MB_OK | MB_ICONINFORMATION);
+		}
+		else
+		{
+			::MessageBox(NULL, _T("注入模块成功!"), _T("PCManager"), MB_OK | MB_ICONINFORMATION);
+		}
+	}
 }
 void CProcessDialog::OnRefreshProcess()
 {

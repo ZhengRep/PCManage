@@ -191,6 +191,7 @@
     <ClInclude Include="CProcessDialog.h" />
     <ClInclude Include="FileHelper.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="InjectionHelper.h" />
     <ClInclude Include="Ntdll.h" />
     <ClInclude Include="ObjectHelper.h" />
     <ClInclude Include="pch.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="PrivilegeHelper.h" />
     <ClInclude Include="ProcessHelper.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SortListCtrl.h" />
     <ClInclude Include="StringHelper.h" />
     <ClInclude Include="SystemHelper.h" />
     <ClInclude Include="targetver.h" />
@@ -208,6 +210,7 @@
     <ClCompile Include="common.cpp" />
     <ClCompile Include="CProcessDialog.cpp" />
     <ClCompile Include="FileHelper.cpp" />
+    <ClCompile Include="InjectionHelper.cpp" />
     <ClCompile Include="Ntdll.cpp" />
     <ClCompile Include="ObjectHelper.cpp" />
     <ClCompile Include="pch.cpp">
@@ -220,6 +223,7 @@
     <ClCompile Include="PCManageDlg.cpp" />
     <ClCompile Include="PrivilegeHelper.cpp" />
     <ClCompile Include="ProcessHelper.cpp" />
+    <ClCompile Include="SortListCtrl.cpp" />
     <ClCompile Include="StringHelpercpp.cpp" />
     <ClCompile Include="SystemHelper.cpp" />
   </ItemGroup>

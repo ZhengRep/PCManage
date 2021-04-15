@@ -2,6 +2,8 @@
 #include "ProcessHelper.h"
 #include "FileHelper.h"
 #include "SystemHelper.h"
+#include "SortListCtrl.h"
+#include "InjectionHelper.h"
 
 // CProcessDialog 对话框
 
@@ -37,7 +39,8 @@ public:
 	ULONG m_ProcessCount;//总的进程
 	ULONG m_DenyAccessCount;//拒绝进程
 	virtual BOOL OnInitDialog();
-	CListCtrl m_ProcessCListCtrl;
+	//CListCtrl m_ProcessCListCtrl;
+	CSortListCtrl m_ProcessCListCtrl;
 	CImageList m_ProcessImageList;
 	CTabCtrl m_ProcessCTabCtrl;
 	HICON m_ProcessIcon;
@@ -67,6 +70,9 @@ public:
 	afx_msg void OnCopyImagePath();
 	afx_msg void OnCheckFileAttributes();
 	afx_msg void OnLocationAtExplorer();
+
+	afx_msg void OnExportText();
+	afx_msg void OnInjectModule1();
 
 
 	
