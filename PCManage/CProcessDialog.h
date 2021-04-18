@@ -42,7 +42,7 @@ public:
 	//CListCtrl m_ProcessCListCtrl;
 	CSortListCtrl m_ProcessCListCtrl;
 	CImageList m_ProcessImageList;
-	CTabCtrl m_ProcessCTabCtrl;
+	CString m_ProcessCEdit;
 	HICON m_ProcessIcon;
 	vector<COLOR_TYPE> m_ColorListCtrl;
 
@@ -58,6 +58,9 @@ public:
 	PPROCESS_TABLE_ENTRY_INFO CProcessDialog::FaGetProcessInfoByItem(int SelectedItem);
 
 	ACTIVITY_STATUS CProcessDialog::FaGetProcessStatus();
+
+	void CProcessDialog::OnShowProcessInfo(); 
+	void CProcessDialog::OnShowProcessDetailInfo();
 
 	afx_msg LRESULT OnUpdateProcessData(WPARAM ParameterData1, LPARAM ParameterData2);
 
@@ -75,6 +78,7 @@ public:
 	afx_msg void OnInjectModule1();
 
 
+	
 	
 	
 };

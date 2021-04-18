@@ -12,10 +12,13 @@
 #define IDD_DRIVER_DIALOG               144
 #define IDC_MAIN_TAB                    1000
 #define IDC_PROCESS_LIST                1009
-#define IDC_PROCESS_TAB                 1010
+//#define IDC_PROCESS_TAB                 1010
 #define IDC_LIST1                       1012
-#define IDC_DRIVER_LIST                 1012
 #define IDC_TOTAL_STATIC                1013
+#define IDC_EDIT1                       1015
+#define IDC_PROCESSINFO_STATIC          1016
+#define IDC_PROCESS_EDIT                1017
+#define IDC_DRIVER_LIST                 1018
 #define Manage                          32774
 #define Show                            32776
 #define ID_MANAGE_SHOW                  32777
@@ -37,6 +40,8 @@
 #define ID_SHOW_ALL_PROCESS_INFO        32793
 #define ID_EXPORT_TEXT                  32794
 #define ID_INJECT_MODULE_1              32795
+#define ID_SHOW_PROCESS_INFO            32796
+#define ID_SHOW_PROCESS_DETAIL_INFO     32797
 
 // Next default values for new objects
 // 
@@ -44,7 +49,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        146
 #define _APS_NEXT_COMMAND_VALUE         32784
-#define _APS_NEXT_CONTROL_VALUE         1015
+#define _APS_NEXT_CONTROL_VALUE         1017
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

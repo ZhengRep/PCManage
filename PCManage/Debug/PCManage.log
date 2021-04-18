@@ -2,8 +2,8 @@
   CDriverDialog.cpp
   common.cpp
   CProcessDialog.cpp
-D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(66,38): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
-D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(67,36): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(69,38): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(70,36): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   FileHelper.cpp
   InjectionHelper.cpp
   Ntdll.cpp

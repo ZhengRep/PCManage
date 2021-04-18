@@ -15,6 +15,7 @@ IMPLEMENT_DYNAMIC(CProcessDialog, CDialogEx)
 CProcessDialog::CProcessDialog(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_PROCESS_DIALOG, pParent)
 	, m_TotalCStatic(_T(""))
+	, m_ProcessCEdit(_T(""))
 {
 #ifndef _WIN32_WCE
 	EnableActiveAccessibility();
@@ -30,8 +31,8 @@ void CProcessDialog::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_PROCESS_LIST, m_ProcessCListCtrl);
-	DDX_Control(pDX, IDC_PROCESS_TAB, m_ProcessCTabCtrl);
 	DDX_Text(pDX, IDC_TOTAL_STATIC, m_TotalCStatic);
+	DDX_Text(pDX, IDC_PROCESS_EDIT, m_ProcessCEdit);
 }
 
 
@@ -50,6 +51,8 @@ BEGIN_MESSAGE_MAP(CProcessDialog, CDialogEx)
 	ON_COMMAND(ID_LOCATION_AT_EXPLORER, &CProcessDialog::OnLocationAtExplorer)
 	ON_COMMAND(ID_EXPORT_TEXT, &CProcessDialog::OnExportText)
 	ON_COMMAND(ID_INJECT_MODULE_1, &CProcessDialog::OnInjectModule1)
+	ON_COMMAND(ID_SHOW_PROCESS_INFO, &CProcessDialog::OnShowProcessInfo)
+	ON_COMMAND(ID_SHOW_PROCESS_DETAIL_INFO, &CProcessDialog::OnShowProcessDetailInfo)
 END_MESSAGE_MAP()
 
 
@@ -258,7 +261,8 @@ void CProcessDialog::OnNMRClickProcessList(NMHDR* pNMHDR, LRESULT* pResult)
 	Menu.CreatePopupMenu();
 	Menu.AppendMenu(MF_STRING, ID_PROCESS_REFRESH, _T("刷新"));
 	Menu.AppendMenu(MF_SEPARATOR);
-	Menu.AppendMenu(MF_STRING, ID_SHOW_ALL_PROCESS_INFO, _T("查看进程详细信息"));
+	Menu.AppendMenu(MF_STRING, ID_SHOW_PROCESS_INFO, _T("查看进程基本信息"));
+	Menu.AppendMenu(MF_STRING, ID_SHOW_PROCESS_DETAIL_INFO, _T("查看进程详细信息"));
 	Menu.AppendMenu(MF_SEPARATOR);
 	Menu.AppendMenu(MF_STRING, ID_KILL_PROCESS, _T("结束进程"));
 	Menu.AppendMenu(MF_STRING, ID_KILL_DELETE_PROCESS, _T("结束进程并删除文件"));
@@ -692,4 +696,46 @@ ACTIVITY_STATUS CProcessDialog::FaGetProcessStatus()
 	}
 
 	return v1;
+}
+
+void CProcessDialog::OnShowProcessInfo()
+{
+
+	m_ProcessCEdit.Empty();
+	UpdateData(FALSE);
+	CString Peb;
+	CString CommandLine;
+	CString Environment;
+	CString CurrentDirectory;
+	int SelectedItem = FaGetSelectedItem(&m_ProcessCListCtrl);
+	PPROCESS_TABLE_ENTRY_INFO v1 = FaGetProcessInfoByItem(SelectedItem);
+	if (!v1)
+	{
+		return;
+	}
+
+	Peb = FaGetPebAddress(v1->ProcessIdentify);
+	CommandLine = FaGetProcessCommandLine(v1->ProcessIdentify);
+	CurrentDirectory = FaGetProcessCurrentDirectory(v1->ProcessIdentify);
+	m_ProcessCEdit += _T("Peb地址：");
+	m_ProcessCEdit += Peb;
+	m_ProcessCEdit += _T("\r\n");
+	m_ProcessCEdit += _T("命令行：");
+	m_ProcessCEdit += CommandLine;
+	m_ProcessCEdit += _T("\r\n");
+	m_ProcessCEdit += _T("当前目录：");
+	m_ProcessCEdit += CurrentDirectory;
+	m_ProcessCEdit += _T("\r\n");
+	m_ProcessCEdit += _T("环境变量：");
+	m_ProcessCEdit += Environment;
+	m_ProcessCEdit += _T("\r\n");
+
+
+	//环境变量
+
+	UpdateData(FALSE);
+}
+void CProcessDialog::OnShowProcessDetailInfo()
+{
+
 }

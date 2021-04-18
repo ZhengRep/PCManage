@@ -2,6 +2,9 @@
 #include "ProcessHelper.h"
 #include "ObjectHelper.h"
 #include "Ntdll.h"
+
+LPFN_NTQUERYINFORMATIONPROCESS __NtQueryInformationProcess = NULL;
+
 HANDLE FaOpenProcess(DWORD DesiredAccess, BOOL IsInheritHandle, HANDLE ProcessIdentify)
 {
 
@@ -68,11 +71,13 @@ BOOL FaRing3EnumProcessList(vector<PROCESS_TABLE_ENTRY_INFO>& ParameterData)
 
 	return IsOk;
 }
+
+//FaEnableDebugPrivilege(
 BOOL   FaGetProcessFullPathByProcessIdentify(HANDLE ProcessIdentify, TCHAR** ImagePath)
 {
 	TCHAR v1[MAX_PATH];
 	BOOL IsOk = FALSE;
-	HANDLE ProcessHandle = INVALID_HANDLE_VALUE;
+	HANDLE ProcessHandle = nullptr;
 	POBJECT_TYPE_INFORMATION v5 = NULL;
 	ULONG  ReturnLength = 0;
 	if (ImagePath == NULL)
@@ -366,6 +371,348 @@ Exit:
 	{
 		FaCloseHandle(SnapshotHandle);
 	}
-
 	return;
 }
+
+CString FaGetPebAddress(HANDLE ProcessIdentify)
+{
+	CString Peb;
+	CString v1 = _T(" ");
+
+	HMODULE ModuleHandle = NULL;
+	ULONG   ReturnLength = 0;
+	NTSTATUS                  Status;
+	HANDLE                    ProcessHandle = nullptr;
+	PROCESS_BASIC_INFORMATION ProcessBasicInfo;
+
+	if (__NtQueryInformationProcess == NULL)
+	{
+		ModuleHandle = GetModuleHandle(_T("Ntdll.dll"));
+		if (ModuleHandle == NULL)
+		{
+			goto Exit;
+		}
+		__NtQueryInformationProcess = (LPFN_NTQUERYINFORMATIONPROCESS)GetProcAddress(ModuleHandle, "NtQueryInformationProcess");
+		if (__NtQueryInformationProcess == NULL)
+		{
+			goto Exit;
+		}
+	}
+
+	// Get process handle
+	ProcessHandle = FaOpenProcess(PROCESS_QUERY_INFORMATION, FALSE, ProcessIdentify);
+	if (ProcessHandle == NULL)
+	{
+		ProcessHandle = FaOpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, ProcessIdentify);
+	}
+	if (ProcessHandle == NULL)
+	{
+		goto Exit;
+	}
+
+	// Retrieve information
+	Status = __NtQueryInformationProcess(ProcessHandle,
+		ProcessBasicInformation,
+		(PVOID)&ProcessBasicInfo,
+		sizeof(PROCESS_BASIC_INFORMATION),
+		NULL);
+
+	if (!NT_SUCCESS(Status))
+	{
+		goto Exit;
+	}
+
+	v1.Format(_T("0x%016x"), ProcessBasicInfo.PebBaseAddress);
+
+Exit:
+
+	if (ProcessHandle != NULL)
+	{
+		FaCloseHandle(ProcessHandle);
+		ProcessHandle = NULL;
+	}
+
+
+	return v1;
+
+}
+CString FaGetProcessCommandLine(HANDLE ProcessIdentify)
+{
+	CString CommandLine = _T(" ");
+
+	HMODULE ModuleHandle = NULL;
+	ULONG   ReturnLength = 0;
+	LONG                      Status;
+	HANDLE                    ProcessHandle = nullptr;
+	PROCESS_BASIC_INFORMATION ProcessBasicInfo;
+	PEB                       Peb;
+	RTL_USER_PROCESS_PARAMETERS        ProcessParameters;
+	SIZE_T                    NumberOfBytesRead;
+	DWORD                     ViewSize;
+	LPVOID                    VirtualAddress;
+	PVOID					  v5 = nullptr;
+	if (__NtQueryInformationProcess == NULL)
+	{
+		ModuleHandle = GetModuleHandle(_T("Ntdll.dll"));
+		if (ModuleHandle == NULL)
+		{
+			goto Exit;
+		}
+		__NtQueryInformationProcess = (LPFN_NTQUERYINFORMATIONPROCESS)GetProcAddress(ModuleHandle, "NtQueryInformationProcess");
+		if (__NtQueryInformationProcess == NULL)
+		{
+			goto Exit;
+		}
+	}
+
+
+	// Get process handle
+	ProcessHandle = FaOpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, ProcessIdentify);
+	if (!ProcessHandle)
+	{
+
+		goto Exit;
+	}
+
+	// Retrieve information
+	Status = __NtQueryInformationProcess(ProcessHandle,
+		ProcessBasicInformation,
+		(PVOID)&ProcessBasicInfo,
+		sizeof(PROCESS_BASIC_INFORMATION),
+		NULL
+	);
+
+	if (Status)
+		goto Exit;
+
+	if (!ReadProcessMemory(ProcessHandle,
+		ProcessBasicInfo.PebBaseAddress,
+		&Peb,
+		sizeof(PEB),
+		&NumberOfBytesRead
+	)
+		)
+		goto Exit;
+
+	if (!ReadProcessMemory(ProcessHandle,
+		Peb.ProcessParameters,
+		&ProcessParameters,
+		sizeof(RTL_USER_PROCESS_PARAMETERS),
+		&NumberOfBytesRead
+	)
+		)
+		goto Exit;
+
+	VirtualAddress = ProcessParameters.CommandLine.Buffer;
+	ViewSize = ProcessParameters.CommandLine.Length;
+
+	v5 = malloc(ViewSize + sizeof(WCHAR));
+	if (!v5)
+		goto Exit;
+
+	memset(v5, 0, ViewSize + sizeof(WCHAR));
+	if (!ReadProcessMemory(ProcessHandle,
+		VirtualAddress,
+		v5,
+		ViewSize,
+		&NumberOfBytesRead
+	)
+		)
+		goto Exit;
+
+	int v7 = (int)wcslen((WCHAR*)v5);
+	int Offset = 0;
+
+
+	if (v7 > 100)
+	{
+		while (v7 >= 100)
+		{
+			WCHAR v1[101] = { 0 };
+			wcsncpy_s(v1, 101, ((WCHAR*)v5 + Offset), 100);
+			CommandLine += L" ";
+			CommandLine += v1;
+			CommandLine += L"\n";
+			v7 -= 100;
+			Offset += 100;
+		}
+
+		if (v7 < 100 && v7 > 0)
+		{
+			//	szCommandLine += L"\n";
+			WCHAR v1[101] = { 0 };
+			wcsncpy_s(v1, 101, ((WCHAR*)v5 + Offset), v7);
+			CommandLine += L" ";
+			CommandLine += v1;
+		}
+	}
+	else
+	{
+		CommandLine += L" ";
+		CommandLine += (WCHAR*)v5;
+	}
+
+Exit:
+
+	FaCloseHandle(ProcessHandle);
+	if (v5)
+	{
+		free(v5);
+		v5 = NULL;
+	}
+
+	return CommandLine;
+}
+CString FaGetProcessCurrentDirectory(HANDLE ProcessIdentify)
+{
+	CString CurrentDirectory;
+	HMODULE ModuleHandle = NULL;
+	ULONG   ReturnLength = 0;
+	LONG                      Status;
+	HANDLE                    ProcessHandle = nullptr;
+	PROCESS_BASIC_INFORMATION ProcessBasicInfo;
+	PEB                       Peb;
+	RTL_USER_PROCESS_PARAMETERS        ProcessParameters;
+	SIZE_T                    NumberOfBytesRead;
+	DWORD                     ViewSize;
+	LPVOID                    VirtualAddress;
+	PVOID					  v5 = nullptr;
+	if (__NtQueryInformationProcess == NULL)
+	{
+		ModuleHandle = GetModuleHandle(_T("Ntdll.dll"));
+		if (ModuleHandle == NULL)
+		{
+			goto Exit;
+		}
+		__NtQueryInformationProcess = (LPFN_NTQUERYINFORMATIONPROCESS)GetProcAddress(ModuleHandle, "NtQueryInformationProcess");
+		if (__NtQueryInformationProcess == NULL)
+		{
+			goto Exit;
+		}
+	}
+
+
+
+	ProcessHandle = FaOpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, ProcessIdentify);
+	if (!ProcessHandle)
+	{
+		goto Exit;
+	}
+	Status = __NtQueryInformationProcess(ProcessHandle,
+		ProcessBasicInformation,
+		(PVOID)&ProcessBasicInfo,
+		sizeof(PROCESS_BASIC_INFORMATION),
+		NULL
+	);
+
+	if (Status)
+		goto Exit;
+
+	if (!ReadProcessMemory(ProcessHandle,
+		ProcessBasicInfo.PebBaseAddress,
+		&Peb,
+		sizeof(PEB),
+		&NumberOfBytesRead
+	)
+		)
+		goto Exit;
+
+	if (!ReadProcessMemory(ProcessHandle,
+		Peb.ProcessParameters,
+		&ProcessParameters,
+		sizeof(RTL_USER_PROCESS_PARAMETERS),
+		&NumberOfBytesRead
+	)
+		)
+		goto Exit;
+
+	VirtualAddress = ProcessParameters.CurrentDirectory.DosPath.Buffer;
+	ViewSize = ProcessParameters.CurrentDirectory.DosPath.Length;
+
+	v5 = malloc(ViewSize + sizeof(WCHAR));
+	if (!v5)
+		goto Exit;
+
+	memset(v5, 0, ViewSize + sizeof(WCHAR));
+	if (!ReadProcessMemory(ProcessHandle,
+		VirtualAddress,
+		v5,
+		ViewSize,
+		&NumberOfBytesRead
+	)
+		)
+		goto Exit;
+	CurrentDirectory = (WCHAR*)v5;
+
+Exit:
+
+	CloseHandle(ProcessHandle);
+	if (v5)
+	{
+		free(v5);
+		v5 = NULL;
+	}
+
+	return CurrentDirectory;
+}
+
+//获取环境变量
+//LPSTR FaGetEnvironmentStringsA(VOID)
+//{
+//	PPEB v1 = NULL;   //当前进程的Peb地址
+//	ULONG Length, v7;
+//	PWCHAR Environment, v2;
+//	PCHAR v5 = nullptr;
+//
+//	//从进程的Peb获取进程的环境变量
+//	v1 = (PPEB)SeNtCurrentPeb();
+//
+//
+//	v2 = Environment = v1->ProcessParameters->Environment;
+//
+//	do
+//	{
+//		v2 += wcslen(v2) + 1;
+//	} while (*v2);
+//
+//	Length = v2 - Environment + 1;
+//
+//	v7 = Length * sizeof(WCHAR);
+//
+//	if (Length != 0)
+//	{
+//		v5 = new char[v7];
+//		if (v5 != NULL)
+//		{
+//			if (WideCharToMultiByte(CP_ACP, 0, Environment, Length, v5, v7, 0, 0) == 0)
+//			{
+//				delete v5;
+//				v5 = NULL;
+//			}
+//		}
+//	}
+//	return v5;
+//}
+//LPWSTR SeGetEnvironmentStringsW(VOID)
+//{
+//	PWCHAR Environment, v2;
+//	ULONG v7;
+//	PWCHAR v5 = NULL;
+//
+//	v2 = Environment = ((PPEB)SeNtCurrentPeb())->ProcessParameters->Environment;
+//
+//	do
+//	{
+//		v2 += wcslen(v2) + 1;
+//	} while (*v2);
+//
+//	v7 = v2 - Environment + 1;
+//
+//	v5 = new WCHAR[v7];
+//	if (v5)
+//	{
+//		memcpy(v5, Environment, v7 * sizeof(WCHAR));
+//	}
+//
+//	return v5;
+//}
