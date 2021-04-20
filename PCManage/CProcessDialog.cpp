@@ -714,6 +714,17 @@ void CProcessDialog::OnShowProcessInfo()
 		return;
 	}
 
+
+	//类封装开始
+	_CProcessHelper Object(v1);
+	if (Object.FaOpenProcess(PROCESS_QUERY_INFORMATION) == FALSE)
+	{
+		if (Object.FaOpenProcess(PROCESS_QUERY_LIMITED_INFORMATION) == FALSE)
+		{
+
+		}
+	}
+
 	Peb = FaGetPebAddress(v1->ProcessIdentify);
 	CommandLine = FaGetProcessCommandLine(v1->ProcessIdentify);
 	CurrentDirectory = FaGetProcessCurrentDirectory(v1->ProcessIdentify);

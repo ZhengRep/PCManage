@@ -1,18 +1,30 @@
-﻿  CProcessDialog.cpp
+﻿  pch.cpp
+  CDriverDialog.cpp
+  common.cpp
+  CProcessDialog.cpp
 D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(69,38): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
 D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(70,36): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(190,19): warning C4566: 由通用字符名称“\U0001F60A”表示的字符不能在当前代码页(936)中表示出来
 D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(286,50): warning C4311: “类型强制转换”: 从“HMENU”到“UINT”的指针截断
 D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(286,50): warning C4302: “类型强制转换”: 从“HMENU”到“UINT”截断
 D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(292,50): warning C4311: “类型强制转换”: 从“HMENU”到“UINT”的指针截断
 D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(292,50): warning C4302: “类型强制转换”: 从“HMENU”到“UINT”截断
 D:\DeskTop\PCManage\PCManage\PCManage\CProcessDialog.cpp(688,58): warning C4312: “类型强制转换”: 从“DWORD”转换到更大的“HANDLE”
+  FileHelper.cpp
   InjectionHelper.cpp
+  Ntdll.cpp
+  ObjectHelper.cpp
   PCManage.cpp
   PCManageDlg.cpp
+  PrivilegeHelper.cpp
   ProcessHelper.cpp
 D:\DeskTop\PCManage\PCManage\PCManage\ProcessHelper.cpp(35,62): warning C4312: “类型强制转换”: 从“DWORD”转换到更大的“HANDLE”
 D:\DeskTop\PCManage\PCManage\PCManage\ProcessHelper.cpp(36,74): warning C4312: “类型强制转换”: 从“DWORD”转换到更大的“HANDLE”
 D:\DeskTop\PCManage\PCManage\PCManage\ProcessHelper.cpp(184,28): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
 D:\DeskTop\PCManage\PCManage\PCManage\ProcessHelper.cpp(202,28): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+  SortListCtrl.cpp
+  StringHelpercpp.cpp
+  SystemHelper.cpp
   正在生成代码...
+D:\DeskTop\PCManage\PCManage\PCManage\ProcessHelper.cpp(752): warning C4715: “_CProcessHelper::FaInitializeMember”: 不是所有的控件路径都返回值
   PCManage.vcxproj -> D:\DeskTop\PCManage\PCManage\x64\Debug\PCManage.exe

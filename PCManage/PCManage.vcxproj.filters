@@ -105,6 +105,9 @@
     <ClInclude Include="InjectionHelper.h">
       <Filter>注入帮助</Filter>
     </ClInclude>
+    <ClInclude Include="ProcessHelper_T.h">
+      <Filter>进程帮助</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PCManage.cpp">

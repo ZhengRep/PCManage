@@ -656,63 +656,117 @@ Exit:
 	return CurrentDirectory;
 }
 
-//获取环境变量
-//LPSTR FaGetEnvironmentStringsA(VOID)
-//{
-//	PPEB v1 = NULL;   //当前进程的Peb地址
-//	ULONG Length, v7;
-//	PWCHAR Environment, v2;
-//	PCHAR v5 = nullptr;
-//
-//	//从进程的Peb获取进程的环境变量
-//	v1 = (PPEB)SeNtCurrentPeb();
-//
-//
-//	v2 = Environment = v1->ProcessParameters->Environment;
-//
-//	do
-//	{
-//		v2 += wcslen(v2) + 1;
-//	} while (*v2);
-//
-//	Length = v2 - Environment + 1;
-//
-//	v7 = Length * sizeof(WCHAR);
-//
-//	if (Length != 0)
-//	{
-//		v5 = new char[v7];
-//		if (v5 != NULL)
-//		{
-//			if (WideCharToMultiByte(CP_ACP, 0, Environment, Length, v5, v7, 0, 0) == 0)
-//			{
-//				delete v5;
-//				v5 = NULL;
-//			}
-//		}
-//	}
-//	return v5;
-//}
-//LPWSTR SeGetEnvironmentStringsW(VOID)
-//{
-//	PWCHAR Environment, v2;
-//	ULONG v7;
-//	PWCHAR v5 = NULL;
-//
-//	v2 = Environment = ((PPEB)SeNtCurrentPeb())->ProcessParameters->Environment;
-//
-//	do
-//	{
-//		v2 += wcslen(v2) + 1;
-//	} while (*v2);
-//
-//	v7 = v2 - Environment + 1;
-//
-//	v5 = new WCHAR[v7];
-//	if (v5)
-//	{
-//		memcpy(v5, Environment, v7 * sizeof(WCHAR));
-//	}
-//
-//	return v5;
-//}
+
+PROCESS_BIT __SourceWow64 = UNKNOW;
+PROCESS_BIT FaGetProcessBit(HANDLE ProcessIdentify)
+{
+	if (HandleToLong(ProcessIdentify) == GetCurrentProcessId())
+	{
+		//获取当前进程的位数
+		SYSTEM_INFO v1 = { { 0 } };
+		GetNativeSystemInfo(&v1);
+
+		if (v1.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_INTEL)  //系统是32位
+		{
+			__SourceWow64 = X86_X86;
+		}
+		else
+		{
+			//系统是64位
+			BOOL IsWow64 = FALSE;
+			IsWow64Process(GetCurrentProcess(), &IsWow64);
+
+			if (IsWow64 == TRUE)
+				__SourceWow64 = X64_X86;
+			else
+				__SourceWow64 = X64_X64;
+		}
+
+		return __SourceWow64;
+	}
+	else
+	{
+		BOOL IsWow64 = FALSE;
+		PROCESS_BIT TargetWow64 = UNKNOW;
+		//通过进程ID获取进程句柄	
+		if (__SourceWow64 == X86_X86)
+		{
+			TargetWow64 = X86_X86;
+			return TargetWow64;
+		}
+
+		HANDLE ProcessHandle;
+		ProcessHandle = FaOpenProcess(PROCESS_QUERY_INFORMATION, FALSE, ProcessIdentify);
+		if (ProcessHandle == NULL)
+		{
+			ProcessHandle = FaOpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, 0, ProcessIdentify);
+		}
+		if (ProcessHandle == NULL)
+		{
+			goto Exit;
+		}
+		IsWow64Process(ProcessHandle, &IsWow64);
+		if (IsWow64 == TRUE && __SourceWow64 != X86_X86)
+		{
+			TargetWow64 = X64_X86;
+		}
+		else if (IsWow64 == FALSE && __SourceWow64 != X86_X86)
+		{
+			TargetWow64 = X64_X64;
+		}
+	Exit:
+		FaCloseHandle(ProcessHandle);
+		return TargetWow64;
+	}
+}
+
+BOOL _CProcessHelper::FaInitializeMember()
+{
+	HMODULE ModuleHandle = GetModuleHandle(_T("Ntdll.dll"));
+	if (ModuleHandle == NULL)
+	{
+		return FALSE;
+	}
+	//32x32
+	//64x64
+	if (m_NtQueryInformationProcess == NULL)
+	{
+
+		m_NtQueryInformationProcess = (LPFN_NTQUERYINFORMATIONPROCESS)GetProcAddress(ModuleHandle, "NtQueryInformationProcess");
+		if (m_NtQueryInformationProcess == NULL)
+		{
+			return FALSE;
+		}
+	}
+	//32x64
+	if (m_NtWow64QueryInformationProcess64 == NULL)
+	{
+		m_NtWow64QueryInformationProcess64 = (LPFN_NTWOW64QUERYINFORMATIONPROCESS64)GetProcAddress(ModuleHandle,
+			"NtWow64QueryInformationProcess64");
+		if (m_NtWow64QueryInformationProcess64 == NULL)
+		{
+			return FALSE;
+		}
+	}
+
+}
+
+BOOL _CProcessHelper::FaOpenProcess(DWORD DesiredAccess, BOOL IsInheritHandle)
+{
+	if (m_ProcessTableEntryInfo != NULL)
+	{
+		m_ProcessHandle = OpenProcess(DesiredAccess, IsInheritHandle, HandleToLong(m_ProcessTableEntryInfo->ProcessIdentify));
+	}
+	return  !!m_ProcessHandle;
+
+}
+CString _CProcessHelper::FaGetProcessPebAddress()
+{
+	CString v1;
+
+
+
+	return v1;
+}
+
+

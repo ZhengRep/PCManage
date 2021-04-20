@@ -125,7 +125,27 @@ typedef long (_stdcall* LPFN_NTQUERYINFORMATIONPROCESS)
 	ULONG,
 	PULONG);
 
+typedef long(_stdcall* LPFN_NTWOW64QUERYINFORMATIONPROCESS64)(
+	IN  HANDLE ProcessHandle,
+	IN  ULONG  ProcessInformationClass,
+	OUT PVOID  ProcessInformation,
+	IN  ULONG  ProcessInformationLength,
+	OUT PULONG ReturnLength OPTIONAL);/*
+typedef NTSTATUS(NTAPI* LPFN_NTWOW64QUERYINFORMATIONPROCESS64)(
+	IN  HANDLE ProcessHandle,
+	IN  ULONG  ProcessInformationClass,
+	OUT PVOID  ProcessInformation,
+	IN  ULONG  ProcessInformationLength,
+	OUT PULONG ReturnLength OPTIONAL);*/
 //extern LPFN_NTQUERYINFORMATIONPROCESS __NtQueryInformationProcess;
+
+
+typedef enum PROCESS_BIT {
+	UNKNOW,
+	X86_X86,  //系统和程序都是x86
+	X64_X86,  //系统是x64程序是x86
+	X64_X64,  //系统是x64程序是x64
+}PROCESS_BIT;
 
 #ifdef _UNICODE 
 #define FaGetEnvironmentStrings FaGetEnvironmentStringsW
@@ -148,3 +168,36 @@ void  FaSuspendOrResumeProcess(PPROCESS_TABLE_ENTRY_INFO ParameterData, BOOL IsS
 CString FaGetPebAddress(HANDLE ProcessIdentify);
 CString FaGetProcessCommandLine(HANDLE ProcessIdentify);
 CString FaGetProcessCurrentDirectory(HANDLE ProcessIdentify);
+
+
+PROCESS_BIT FaGetProcessBit(HANDLE ProcessIdentify);
+class _CProcessHelper
+{
+public:
+	_CProcessHelper()
+	{
+		m_ProcessTableEntryInfo = NULL;
+		m_ProcessHandle = NULL;
+		m_NtQueryInformationProcess = NULL;
+		m_NtWow64QueryInformationProcess64 = NULL;
+		FaInitializeMember();
+	}
+	_CProcessHelper(PPROCESS_TABLE_ENTRY_INFO ProcessTableEntryInfo)
+	{
+		m_ProcessTableEntryInfo = ProcessTableEntryInfo;
+		m_ProcessHandle = NULL;
+		m_NtQueryInformationProcess = NULL;
+		m_NtWow64QueryInformationProcess64 = NULL;
+		FaInitializeMember();
+	}
+	BOOL FaInitializeMember();
+	BOOL FaOpenProcess(DWORD DesiredAccess = PROCESS_ALL_ACCESS, BOOL IsInheritHandle = FALSE);
+	CString FaGetProcessPebAddress();
+protected:
+private:
+	PPROCESS_TABLE_ENTRY_INFO m_ProcessTableEntryInfo;
+	HANDLE m_ProcessHandle;
+
+	LPFN_NTQUERYINFORMATIONPROCESS m_NtQueryInformationProcess;
+	LPFN_NTWOW64QUERYINFORMATIONPROCESS64 m_NtWow64QueryInformationProcess64;
+};

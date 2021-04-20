@@ -45,7 +45,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -199,6 +199,7 @@
     <ClInclude Include="PCManageDlg.h" />
     <ClInclude Include="PrivilegeHelper.h" />
     <ClInclude Include="ProcessHelper.h" />
+    <ClInclude Include="ProcessHelper_T.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SortListCtrl.h" />
     <ClInclude Include="StringHelper.h" />
