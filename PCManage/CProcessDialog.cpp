@@ -63,6 +63,8 @@ BOOL CProcessDialog::OnInitDialog()
 
 	// TODO:  在此添加额外的初始化
 
+	FaGetProcessBit(LongToHandle(GetCurrentProcessId()));   //获得当前进程的位数
+
 	LOGFONT  Logfont;//最好弄成类成员,全局变量,静态成员  
 	CFont* v3 = m_ProcessCListCtrl.GetFont();
 	v3->GetLogFont(&Logfont);
@@ -717,17 +719,26 @@ void CProcessDialog::OnShowProcessInfo()
 
 	//类封装开始
 	_CProcessHelper Object(v1);
-	if (Object.FaOpenProcess(PROCESS_QUERY_INFORMATION) == FALSE)
-	{
-		if (Object.FaOpenProcess(PROCESS_QUERY_LIMITED_INFORMATION) == FALSE)
-		{
 
+	if (Object.FaOpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ) == FALSE)
+	{
+		if (Object.FaOpenProcess(PROCESS_QUERY_LIMITED_INFORMATION | PROCESS_VM_READ) == FALSE)
+		{
+			m_ProcessCEdit += _T("FaOpenProcess() Error\r\n");
+			goto Exit;
 		}
 	}
 
-	Peb = FaGetPebAddress(v1->ProcessIdentify);
-	CommandLine = FaGetProcessCommandLine(v1->ProcessIdentify);
+	//类封装下的peb信息获取
+	Peb = Object.FaGetProcessPebAddress();
+
+	CommandLine = Object.FaGetProcessCommandLine();
+
 	CurrentDirectory = FaGetProcessCurrentDirectory(v1->ProcessIdentify);
+
+	/*Peb = FaGetPebAddress(v1->ProcessIdentify);
+	CommandLine = FaGetProcessCommandLine(v1->ProcessIdentify);
+	CurrentDirectory = FaGetProcessCurrentDirectory(v1->ProcessIdentify);*/
 	m_ProcessCEdit += _T("Peb地址：");
 	m_ProcessCEdit += Peb;
 	m_ProcessCEdit += _T("\r\n");
@@ -743,7 +754,7 @@ void CProcessDialog::OnShowProcessInfo()
 
 
 	//环境变量
-
+Exit:
 	UpdateData(FALSE);
 }
 void CProcessDialog::OnShowProcessDetailInfo()

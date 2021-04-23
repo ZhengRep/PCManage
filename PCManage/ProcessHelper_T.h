@@ -1,4 +1,9 @@
 #pragma once
+#include "Ntdll.h"
+#include "StringHelper_T.h"
+
+
+
 template <class T>
 struct _LIST_ENTRY_T
 {
@@ -6,7 +11,60 @@ struct _LIST_ENTRY_T
 	T Blink;
 };
 
+template<class T>
+struct _CURDIR_T
+{
+	_UNICODE_STRING_T<T> DosPath;
+	T Handle;
+};
 
+template<class T>
+struct _RTL_DRIVE_LETTER_CURDIR_T
+{
+
+	WORD Flags;
+	WORD Length;
+	ULONG TimeStamp;
+	_UNICODE_STRING_T<T> DosPath;
+
+};
+
+template <class T>
+struct _RTL_USER_PROCESS_PARAMETERS_T
+{
+	ULONG MaximumLength;
+	ULONG Length;
+	ULONG Flags;
+	ULONG DebugFlags;
+	T     ConsoleHandle;
+	ULONG ConsoleFlags;
+	T     StandardInput;
+	T     StandardOutput;
+	T     StandardError;
+	_CURDIR_T<T> CurrentDirectory;
+	_UNICODE_STRING_T<T> DllPath;
+	_UNICODE_STRING_T<T> ImagePathName;
+	_UNICODE_STRING_T<T> CommandLine;
+	T     Environment;
+	ULONG StartingX;
+	ULONG StartingY;
+	ULONG CountX;
+	ULONG CountY;
+	ULONG CountCharsX;
+	ULONG CountCharsY;
+	ULONG FillAttribute;
+	ULONG WindowFlags;
+	ULONG ShowWindowFlags;
+	_UNICODE_STRING_T<T> WindowTitle;
+	_UNICODE_STRING_T<T> DesktopInfo;
+	_UNICODE_STRING_T<T> ShellInfo;
+	_UNICODE_STRING_T<T> RuntimeData;
+	_RTL_DRIVE_LETTER_CURDIR_T<T> CurrentDirectores[32];
+	T     EnvironmentSize;
+	T     EnvironmentVersion;
+};
+typedef _RTL_USER_PROCESS_PARAMETERS_T<DWORD> RTL_USER_PROCESS_PARAMETERS32;
+typedef _RTL_USER_PROCESS_PARAMETERS_T<DWORD64> RTL_USER_PROCESS_PARAMETERS64;
 
 template <class T, class NGF, int A>
 struct _PEB_
@@ -185,3 +243,4 @@ struct _LDR_DATA_TABLE_ENTRY_T
 };
 typedef _LDR_DATA_TABLE_ENTRY_T<DWORD> LDR_DATA_TABLE_ENTRY32;
 typedef _LDR_DATA_TABLE_ENTRY_T<DWORD64> LDR_DATA_TABLE_ENTRY64;
+

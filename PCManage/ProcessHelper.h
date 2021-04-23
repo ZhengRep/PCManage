@@ -7,6 +7,7 @@
 #include <Psapi.h>
 #include<algorithm>
 #include "StringHelper.h"
+#include "ProcessHelper_T.h"
 
 #pragma comment(lib,"Psapi.lib")
 using namespace std;
@@ -18,18 +19,6 @@ typedef enum _ACTIVITY_STATUS_
 	RESUME,
 	MYSELF
 }ACTIVITY_STATUS;
-
-typedef struct _PPROCESS_TABLE_ENTRY_INFO_
-{
-	TCHAR ImageName[MAX_PATH];
-	HANDLE ProcessIdentify;
-	HANDLE ParentProcessIdentify;
-	ULONG_PTR EProcess;           //Ring0
-	ULONGLONG CreateTime;
-	TCHAR ImagePath[MAX_PATH];    //Ring3
-	WCHAR ImagePath_[MAX_PATH];   //Ring0
-	ACTIVITY_STATUS ActivityStatus = UNKNOWN;
-}PROCESS_TABLE_ENTRY_INFO, * PPROCESS_TABLE_ENTRY_INFO;
 
 
 typedef struct _CURDIR
@@ -147,6 +136,20 @@ typedef enum PROCESS_BIT {
 	X64_X64,  //系统是x64程序是x64
 }PROCESS_BIT;
 
+
+typedef struct _PPROCESS_TABLE_ENTRY_INFO_
+{
+	TCHAR ImageName[MAX_PATH];
+	HANDLE ProcessIdentify;
+	HANDLE ParentProcessIdentify;
+	ULONG_PTR EProcess;           //Ring0
+	ULONGLONG CreateTime;
+	TCHAR ImagePath[MAX_PATH];    //Ring3
+	WCHAR ImagePath_[MAX_PATH];   //Ring0
+	ACTIVITY_STATUS ActivityStatus = UNKNOWN;
+	PROCESS_BIT     ProcessBit;
+}PROCESS_TABLE_ENTRY_INFO, * PPROCESS_TABLE_ENTRY_INFO;
+
 #ifdef _UNICODE 
 #define FaGetEnvironmentStrings FaGetEnvironmentStringsW
 #else
@@ -190,9 +193,31 @@ public:
 		m_NtWow64QueryInformationProcess64 = NULL;
 		FaInitializeMember();
 	}
+	/**
+	 * 一些辅助函数
+	 */
 	BOOL FaInitializeMember();
 	BOOL FaOpenProcess(DWORD DesiredAccess = PROCESS_ALL_ACCESS, BOOL IsInheritHandle = FALSE);
+	
+	
+	
+	//函数重载(参数个数或参数类型不同发生重载与返回值无关)
+	DWORD64 FaGetProcessPebAddress(PEB64* Peb);
+	DWORD FaGetProcessPebAddress(PEB32* Peb);    
+
+	BOOL FaReadProcessMemory(DWORD64 VirtualAddress, LPVOID BufferData, size_t ViewSize, DWORD64* NumberOfBytesRead = NULL);
+	BOOL FaReadProcessMemory(DWORD VirtualAddress, LPVOID BufferData, size_t ViewSize, DWORD64* NumberOfBytesRead = NULL);
+
+	template<typename T>
+	CString  FaGetProcessCommandLine_T();
+
+	/**
+	 * 一些功能函数
+	 */
 	CString FaGetProcessPebAddress();
+	CString FaGetProcessCommandLine();
+
+
 protected:
 private:
 	PPROCESS_TABLE_ENTRY_INFO m_ProcessTableEntryInfo;

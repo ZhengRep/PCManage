@@ -108,6 +108,9 @@
     <ClInclude Include="ProcessHelper_T.h">
       <Filter>进程帮助</Filter>
     </ClInclude>
+    <ClInclude Include="StringHelper_T.h">
+      <Filter>字符串帮助</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PCManage.cpp">

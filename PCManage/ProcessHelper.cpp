@@ -4,6 +4,7 @@
 #include "Ntdll.h"
 
 LPFN_NTQUERYINFORMATIONPROCESS __NtQueryInformationProcess = NULL;
+PROCESS_BIT __SourceWow64 = UNKNOW;
 
 HANDLE FaOpenProcess(DWORD DesiredAccess, BOOL IsInheritHandle, HANDLE ProcessIdentify)
 {
@@ -37,6 +38,32 @@ BOOL FaRing3EnumProcessList(vector<PROCESS_TABLE_ENTRY_INFO>& ParameterData)
 
 				TCHAR* v5 = NULL;
 
+
+				//获得目标进程位数
+				if (__SourceWow64 == X86_X86)  //如果在32位系统上所有进程都是32位
+				{
+					v1.ProcessBit = X86_X86;
+				}
+				else if (v1.ProcessIdentify == LongToHandle(GetCurrentProcessId()))
+				{
+					if (__SourceWow64 == X64_X86)
+					{
+						v1.ProcessBit = X64_X86;
+					}
+					else
+					{
+						v1.ProcessBit = X64_X64;
+					}
+				}
+				else
+				{
+					v1.ProcessBit = FaGetProcessBit(v1.ProcessIdentify);  //目标进程
+				}
+
+
+
+
+
 				//通过进程ID获取进程完整路径
 				if (FaGetProcessFullPathByProcessIdentify(v1.ProcessIdentify, &v5))
 				{
@@ -52,8 +79,7 @@ BOOL FaRing3EnumProcessList(vector<PROCESS_TABLE_ENTRY_INFO>& ParameterData)
 				{
 					VirtualFree(v5, 0, MEM_RELEASE);
 				}
-
-
+				v1.ActivityStatus = UNKNOWN;
 				ParameterData.push_back(v1);
 
 
@@ -657,7 +683,6 @@ Exit:
 }
 
 
-PROCESS_BIT __SourceWow64 = UNKNOW;
 PROCESS_BIT FaGetProcessBit(HANDLE ProcessIdentify)
 {
 	if (HandleToLong(ProcessIdentify) == GetCurrentProcessId())
@@ -760,13 +785,174 @@ BOOL _CProcessHelper::FaOpenProcess(DWORD DesiredAccess, BOOL IsInheritHandle)
 	return  !!m_ProcessHandle;
 
 }
-CString _CProcessHelper::FaGetProcessPebAddress()
+
+
+/************************************************************************/
+/* 类封装                                                               */
+/************************************************************************/
+
+DWORD64 _CProcessHelper::FaGetProcessPebAddress(PEB64* Peb)
 {
-	CString v1;
+
+	PROCESS_BASIC_INFORMATION ProcessBasicInfo = { 0 };
+	ULONG ReturnLength = 0;
+
+	if (NT_SUCCESS(m_NtQueryInformationProcess(m_ProcessHandle, ProcessBasicInformation, &ProcessBasicInfo, (ULONG)sizeof(ProcessBasicInfo), &ReturnLength)) && Peb)
+		ReadProcessMemory(m_ProcessHandle, ProcessBasicInfo.PebBaseAddress, Peb, sizeof(PEB64), NULL);
+
+	return reinterpret_cast<DWORD64>(ProcessBasicInfo.PebBaseAddress);
+}
 
 
+DWORD _CProcessHelper::FaGetProcessPebAddress(PEB32* Peb)
+{
+
+	uint64_t v1 = 0;
+	if (NT_SUCCESS(m_NtQueryInformationProcess(m_ProcessHandle, ProcessWow64Information, &v1, (ULONG)sizeof(v1), NULL)) && Peb)
+		ReadProcessMemory(m_ProcessHandle, reinterpret_cast<LPCVOID>(v1), Peb, sizeof(PEB32), NULL);
 
 	return v1;
 }
 
 
+
+BOOL _CProcessHelper::FaReadProcessMemory(DWORD64 VirtualAddress, LPVOID BufferData, size_t ViewSize, DWORD64* NumberOfBytesRead)
+{
+
+	return ReadProcessMemory(m_ProcessHandle, reinterpret_cast<LPVOID>(VirtualAddress), BufferData, ViewSize, reinterpret_cast<SIZE_T*>(NumberOfBytesRead));
+
+
+}
+
+
+BOOL _CProcessHelper::FaReadProcessMemory(DWORD VirtualAddress, LPVOID BufferData, size_t ViewSize, DWORD64* NumberOfBytesRead)
+{
+
+	return ReadProcessMemory(m_ProcessHandle, reinterpret_cast<LPVOID>(VirtualAddress), BufferData,
+		ViewSize, reinterpret_cast<SIZE_T*>(NumberOfBytesRead));
+
+}
+
+template<typename T>
+CString _CProcessHelper::FaGetProcessCommandLine_T()
+{
+
+	CString v1 = _T("-");
+	typename _PEB_T<T>::type Peb = { { { 0 } } };
+
+	_RTL_USER_PROCESS_PARAMETERS_T<T> ProcessParameters = { 0 };
+	_UNICODE_STRING_T<T> CommandLine;
+	LPVOID               v5 = NULL;
+	DWORD                ViewSize;
+	T                    VirtualAddress;
+	DWORD64              NumberOfBytesRead;
+
+	//获得目标进程Peb
+	if (FaGetProcessPebAddress(&Peb) != 0 && FaReadProcessMemory(Peb.ProcessParameters, &ProcessParameters, sizeof(ProcessParameters), 0) == TRUE)
+	{
+		VirtualAddress = ProcessParameters.CommandLine.Buffer;
+		ViewSize = ProcessParameters.CommandLine.Length;
+
+		v5 = malloc(ViewSize + sizeof(WCHAR));
+		if (!v5)
+			goto Exit;
+
+		memset(v5, 0, ViewSize + sizeof(WCHAR));
+		if (FaReadProcessMemory(VirtualAddress, v5, ViewSize, &NumberOfBytesRead) == FALSE)
+		{
+			goto Exit;
+		}
+
+
+		int v7 = (int)wcslen((WCHAR*)v5);
+		int Offset = 0;
+		if (v7 > 100)
+		{
+			while (v7 >= 100)
+			{
+				WCHAR v2[101] = { 0 };
+				wcsncpy_s(v2, 101, ((WCHAR*)v5 + Offset), 100);
+				v1 += L"      ";
+				v1 += v2;
+				v1 += L"\n";
+				v7 -= 100;
+				Offset += 100;
+			}
+
+			if (v7 < 100 && v7 > 0)
+			{
+				//	szCommandLine += L"\n";
+				WCHAR v2[101] = { 0 };
+				wcsncpy_s(v2, 101, ((WCHAR*)v5 + Offset), v7);
+				v1 += L" ";
+				v1 += v2;
+			}
+		}
+		else
+		{
+			v1 += L" ";
+			v1 += (WCHAR*)v5;
+		}
+
+	}
+
+Exit:
+	if (v5)
+	{
+		free(v5);
+		v5 = NULL;
+	}
+	return v1;
+}
+
+/**
+ * 功能函数
+ */
+
+CString _CProcessHelper::FaGetProcessPebAddress()
+{
+	CString v1 = _T("-");
+
+	if (m_ProcessHandle == NULL)
+	{
+		goto Exit;
+	}
+	//判断目标进程的位数
+	if (m_ProcessTableEntryInfo->ProcessBit == X64_X86 && __SourceWow64 == X64_X64)
+	{
+		PEB32 Peb;
+		ULONG32 VirtualAddress = FaGetProcessPebAddress(&Peb);
+		v1.Format(_T("0x%08x"), VirtualAddress);
+	}
+	else if (m_ProcessTableEntryInfo->ProcessBit == X64_X64 && __SourceWow64 == X64_X64)
+	{
+		PEB64 Peb;
+		ULONG64 VirtualAddress = FaGetProcessPebAddress(&Peb);
+		v1.Format(_T("0x%016x"), VirtualAddress);
+	}
+
+Exit:
+
+	return v1;
+
+}
+
+CString _CProcessHelper::FaGetProcessCommandLine()
+{
+	CString v1 = _T("-");
+	if (m_ProcessHandle == NULL)
+	{
+		goto Exit;
+	}
+	if (m_ProcessTableEntryInfo->ProcessBit == X64_X86 && __SourceWow64 == X64_X64)
+	{
+		v1 = FaGetProcessCommandLine_T<DWORD>();
+	}
+	else if (m_ProcessTableEntryInfo->ProcessBit == X64_X64 && __SourceWow64 == X64_X64)
+	{
+		v1 = FaGetProcessCommandLine_T<DWORD64>();
+	}
+Exit:
+
+	return v1;
+}
