@@ -52,7 +52,9 @@ BEGIN_MESSAGE_MAP(CProcessDialog, CDialogEx)
 	ON_COMMAND(ID_EXPORT_TEXT, &CProcessDialog::OnExportText)
 	ON_COMMAND(ID_INJECT_MODULE_1, &CProcessDialog::OnInjectModule1)
 	ON_COMMAND(ID_SHOW_PROCESS_INFO, &CProcessDialog::OnShowProcessInfo)
-	ON_COMMAND(ID_SHOW_PROCESS_DETAIL_INFO, &CProcessDialog::OnShowProcessDetailInfo)
+
+	ON_COMMAND(ID_SHOW_PROCESS_DETAIL_INFO,&CProcessDialog::OnShowProcessDetailInfo)
+
 END_MESSAGE_MAP()
 
 
@@ -757,7 +759,36 @@ void CProcessDialog::OnShowProcessInfo()
 Exit:
 	UpdateData(FALSE);
 }
+
 void CProcessDialog::OnShowProcessDetailInfo()
 {
 
+	int SelectItem = FaGetSelectedItem(&m_ProcessCListCtrl);
+	if (-1 == SelectItem)
+	{
+		return;
+	}
+
+	FaOnShowProcessDetailInfo(FaGetSelectedItem(&m_ProcessCListCtrl));
+
+
+
+}
+void  CProcessDialog::FaOnShowProcessDetailInfo(int SelectedItem)
+{
+	if (SelectedItem == -1)
+	{
+		return;
+	}
+
+	PPROCESS_TABLE_ENTRY_INFO v1 = FaGetProcessInfoByItem(SelectedItem);
+	if (!v1)
+	{
+		return;
+	}
+
+	CProcessDetailInfoCDialog v2(this,v1);
+
+	//v2.m_ParentProcessInfo = SeGetParentProcessInfo(v1->ParentProcessIdentify);
+	v2.DoModal();
 }

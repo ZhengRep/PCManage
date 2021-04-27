@@ -189,7 +189,9 @@
   <ItemGroup>
     <ClInclude Include="CDriverDialog.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="CProcessDetailInfoCDialog.h" />
     <ClInclude Include="CProcessDialog.h" />
+    <ClInclude Include="CProcessModuleCDialog.h" />
     <ClInclude Include="FileHelper.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="InjectionHelper.h" />
@@ -211,7 +213,9 @@
   <ItemGroup>
     <ClCompile Include="CDriverDialog.cpp" />
     <ClCompile Include="common.cpp" />
+    <ClCompile Include="CProcessDetailInfoCDialog.cpp" />
     <ClCompile Include="CProcessDialog.cpp" />
+    <ClCompile Include="CProcessModuleCDialog.cpp" />
     <ClCompile Include="FileHelper.cpp" />
     <ClCompile Include="InjectionHelper.cpp" />
     <ClCompile Include="Ntdll.cpp" />

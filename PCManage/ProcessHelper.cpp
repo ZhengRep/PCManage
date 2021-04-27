@@ -909,6 +909,13 @@ Exit:
  * ¹¦ÄÜº¯Êý
  */
 
+BOOL _CProcessHelper::FaEnumModules()
+{
+	return 0;
+}
+
+
+
 CString _CProcessHelper::FaGetProcessPebAddress()
 {
 	CString v1 = _T("-");

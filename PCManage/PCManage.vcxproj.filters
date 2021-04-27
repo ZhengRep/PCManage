@@ -49,6 +49,9 @@
     <Filter Include="注入帮助">
       <UniqueIdentifier>{30796ed5-db4e-43e4-9f77-5e8b5a3e6300}</UniqueIdentifier>
     </Filter>
+    <Filter Include="进程帮助\进程模块">
+      <UniqueIdentifier>{58ae5876-412f-403e-af14-2a51c5203416}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PCManage.h">
@@ -111,6 +114,12 @@
     <ClInclude Include="StringHelper_T.h">
       <Filter>字符串帮助</Filter>
     </ClInclude>
+    <ClInclude Include="CProcessDetailInfoCDialog.h">
+      <Filter>进程帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="CProcessModuleCDialog.h">
+      <Filter>进程帮助\进程模块</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PCManage.cpp">
@@ -157,6 +166,12 @@
     </ClCompile>
     <ClCompile Include="InjectionHelper.cpp">
       <Filter>注入帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="CProcessDetailInfoCDialog.cpp">
+      <Filter>进程帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="CProcessModuleCDialog.cpp">
+      <Filter>进程帮助\进程模块</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

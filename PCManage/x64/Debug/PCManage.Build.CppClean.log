@@ -5,6 +5,7 @@ d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pch.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\systemhelper.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\stringhelpercpp.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\sortlistctrl.obj
+d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\processhelper.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\privilegehelper.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanagedlg.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.obj
@@ -15,6 +16,16 @@ d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\filehelper.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\cprocessdialog.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\common.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\cdriverdialog.obj
+d:\desktop\pcmanage\pcmanage\x64\debug\pcmanage.ilk
+d:\desktop\pcmanage\pcmanage\x64\debug\pcmanage.exe
+d:\desktop\pcmanage\pcmanage\x64\debug\pcmanage.pdb
+d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.res
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.tlog\cl.command.1.tlog
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.tlog\cl.read.1.tlog
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.tlog\cl.write.1.tlog
+d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.tlog\link.command.1.tlog
+d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.tlog\link.read.1.tlog
+d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.tlog\link.write.1.tlog
+d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.tlog\rc.command.1.tlog
+d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.tlog\rc.read.1.tlog
+d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\pcmanage.tlog\rc.write.1.tlog

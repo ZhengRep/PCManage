@@ -217,6 +217,8 @@ public:
 	CString FaGetProcessPebAddress();
 	CString FaGetProcessCommandLine();
 
+	BOOL FaEnumModules();
+
 
 protected:
 private:

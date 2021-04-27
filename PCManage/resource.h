@@ -10,15 +10,19 @@
 #define IDR_ICON_NOTIFY_MENU            131
 #define IDD_PROCESS_DIALOG              140
 #define IDD_DRIVER_DIALOG               144
+#define IDD_PROCESS_DETAIL_INFO_DIALOG  146
+#define IDD_DIALOG1                     147
+#define IDD_PROCESS_MODUEL_DIALOG       148
 #define IDC_MAIN_TAB                    1000
 #define IDC_PROCESS_LIST                1009
-//#define IDC_PROCESS_TAB                 1010
 #define IDC_LIST1                       1012
 #define IDC_TOTAL_STATIC                1013
+#define IDC_PROCESS_DETAIL_INFO_TAB     1014
 #define IDC_EDIT1                       1015
 #define IDC_PROCESSINFO_STATIC          1016
 #define IDC_PROCESS_EDIT                1017
 #define IDC_DRIVER_LIST                 1018
+#define IDC_LIST2                       1018
 #define Manage                          32774
 #define Show                            32776
 #define ID_MANAGE_SHOW                  32777
@@ -47,9 +51,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        146
+#define _APS_NEXT_RESOURCE_VALUE        150
 #define _APS_NEXT_COMMAND_VALUE         32784
-#define _APS_NEXT_CONTROL_VALUE         1017
+#define _APS_NEXT_CONTROL_VALUE         1019
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

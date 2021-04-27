@@ -4,6 +4,7 @@
 #include "SystemHelper.h"
 #include "SortListCtrl.h"
 #include "InjectionHelper.h"
+#include "CProcessDetailInfoCDialog.h"
 
 // CProcessDialog 对话框
 
@@ -61,6 +62,7 @@ public:
 
 	void CProcessDialog::OnShowProcessInfo(); 
 	void CProcessDialog::OnShowProcessDetailInfo();
+	void CProcessDialog::FaOnShowProcessDetailInfo(int SelectItem);
 
 	afx_msg LRESULT OnUpdateProcessData(WPARAM ParameterData1, LPARAM ParameterData2);
 
