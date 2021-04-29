@@ -13,7 +13,9 @@ d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\objecthelper.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\ntdll.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\injectionhelper.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\filehelper.obj
+d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\cprocessmodulecdialog.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\cprocessdialog.obj
+d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\cprocessdetailinfocdialog.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\common.obj
 d:\desktop\pcmanage\pcmanage\pcmanage\x64\debug\cdriverdialog.obj
 d:\desktop\pcmanage\pcmanage\x64\debug\pcmanage.ilk

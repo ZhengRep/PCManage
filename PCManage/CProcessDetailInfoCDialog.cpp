@@ -69,7 +69,36 @@ BOOL CProcessDetailInfoCDialog::OnInitDialog()
 
 
 	m_CurrentSelect = 0;
-	return 0;
+
+	FaEnumProcessModules(m_ProcessTableEntryInfo);
+	return TRUE;
+}
+
+void CProcessDetailInfoCDialog::FaEnumProcessModules(PPROCESS_TABLE_ENTRY_INFO ProcessTableEntryInfo)
+{
+	if (ProcessTableEntryInfo->ProcessIdentify == 0)
+	{
+		return;
+	}
+	ULONG ProcessModuleCount = 0, NotMicrosoftModuleCount = 0;
+	CString StatusInfo;
+	/*	if (__IsFirst)
+		{
+			m_ProcessModuleDialog.m_IsShowMicrosoftModule = FALSE;
+			__IsFirst = FALSE;
+		}*/
+	if (m_ProcessModuleCDialog.FaEnumProcessModules(ProcessTableEntryInfo, &ProcessModuleCount, &NotMicrosoftModuleCount, StatusInfo) == TRUE)
+	{
+
+		//m_ProcessInfoStatic.Format(_T("模块(非微软模块总数/模块总数)：%d/%d"), NotMicrosoftModuleCount, ProcessModuleCount);
+	}
+	else
+	{
+		//m_ProcessInfoStatic = StatusInfo;
+		//m_ProcessInfoStatic.Format(_T("模块(非微软模块总数/模块总数)：%d/%d"), NotMicrosoftModuleCount, ProcessModuleCount);
+	}
+
+	UpdateData(FALSE);
 }
 
 

@@ -22,7 +22,7 @@
 #define IDC_PROCESSINFO_STATIC          1016
 #define IDC_PROCESS_EDIT                1017
 #define IDC_DRIVER_LIST                 1018
-#define IDC_LIST2                       1018
+#define IDC_PROCESS_MODULE_LIST         1020
 #define Manage                          32774
 #define Show                            32776
 #define ID_MANAGE_SHOW                  32777

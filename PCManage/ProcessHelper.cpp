@@ -833,6 +833,7 @@ BOOL _CProcessHelper::FaReadProcessMemory(DWORD VirtualAddress, LPVOID BufferDat
 
 }
 
+
 template<typename T>
 CString _CProcessHelper::FaGetProcessCommandLine_T()
 {
@@ -905,6 +906,59 @@ Exit:
 	return v1;
 }
 
+template<typename T>
+size_t _CProcessHelper::FaRing3EnumProcessModuleList_T(vector<MODULE_TABLE_ENTRY_INFO>& ModuleTableEntryInfo, CString& StatusInfo)
+{
+	typename _PEB_T<T>::type Peb = { { { 0 } } };
+	_PEB_LDR_DATA_T<T> PebLdrData = { 0 };
+
+	ModuleTableEntryInfo.clear();
+
+	//获得目标进程Peb
+	if (FaGetProcessPebAddress(&Peb) != 0 && NT_SUCCESS(FaReadProcessMemory(Peb.Ldr, &PebLdrData, sizeof(PebLdrData), 0)))
+	{
+		for (T v1 = PebLdrData.InLoadOrderModuleList.Flink;
+			v1 != (Peb.Ldr + FIELD_OFFSET(_PEB_LDR_DATA_T<T>, InLoadOrderModuleList));
+			FaReadProcessMemory(static_cast<ULONG64>(v1), &v1, sizeof(v1), 0))
+		{
+			MODULE_TABLE_ENTRY_INFO v2 = { 0 };
+			wchar_t ModulePath[MAX_PATH] = { 0 };
+			wchar_t ModuleName[MAX_PATH] = { 0 };
+			_LDR_DATA_TABLE_ENTRY_T<T> LdrDataTableEntry = { { 0 } };
+
+			FaReadProcessMemory(v1, &LdrDataTableEntry, sizeof(LdrDataTableEntry), 0);
+			FaReadProcessMemory(LdrDataTableEntry.FullDllName.Buffer,
+				ModulePath, LdrDataTableEntry.FullDllName.Length, 0);
+
+			v2.VirtualAddress = (ULONGLONG)LdrDataTableEntry.DllBase;
+			v2.ViewSize = (ULONGLONG)LdrDataTableEntry.SizeOfImage;
+			wcscpy(ModuleName, wcsrchr(ModulePath, L'\\') + 1);
+
+
+#ifdef _UNICODE
+			memcpy(v2.ModulePath, ModulePath, (UINT)(wcslen(ModulePath) * sizeof(WCHAR)));
+			memcpy(v2.ModuleName, ModuleName, (UINT)(wcslen(ModuleName) * sizeof(WCHAR)));
+#else
+			char v13[0x1000] = { 0 };
+			WideCharToMultiByte(CP_ACP, 0, ModulePath, -1, v13, 0x1000, NULL, NULL);
+			memcpy(v2.ModulePath, v13, (UINT)strlen(v13));
+
+			ZeroMemory(v13, 0x1000);
+			WideCharToMultiByte(CP_ACP, 0, ModuleName, -1, v13, 0x1000, NULL, NULL);
+			memcpy(v2.ModuleName, v13, (UINT)strlen(v13));
+#endif
+			v2.ModuleBit = std::is_same<T, DWORD>::value ? X86_MODULE : X64_MODULE;
+			ModuleTableEntryInfo.emplace_back(v2);
+		}
+	}
+	if (ModuleTableEntryInfo.size() == 0)
+	{
+		StatusInfo = _T("FaGetPeb函数错误或FaReadProcessMemory函数错误");
+	}
+	return ModuleTableEntryInfo.size();
+	return size_t();
+}
+
 /**
  * 功能函数
  */
@@ -962,4 +1016,25 @@ CString _CProcessHelper::FaGetProcessCommandLine()
 Exit:
 
 	return v1;
+}
+
+size_t _CProcessHelper::FaRing3EnumProcessModules(vector<MODULE_TABLE_ENTRY_INFO>& ModuleTableEntryInfo, MODULE_SEACH_TYPE ModuleSeachType, CString& StatusInfo)
+{
+	if (ModuleSeachType == INLOADORDER)
+	{
+		if (m_ProcessTableEntryInfo->ProcessBit == X64_X86 && __SourceWow64 == X64_X64)
+		{
+			FaRing3EnumProcessModuleList_T<DWORD>(ModuleTableEntryInfo, StatusInfo);
+		}
+		else if (m_ProcessTableEntryInfo->ProcessBit == X64_X64 && __SourceWow64 == X64_X64)
+		{
+			FaRing3EnumProcessModuleList_T<DWORD64>(ModuleTableEntryInfo, StatusInfo);
+		}
+
+		return ModuleTableEntryInfo.size();
+
+
+	}
+
+	return 0;
 }

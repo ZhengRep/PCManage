@@ -119,7 +119,9 @@ typedef long(_stdcall* LPFN_NTWOW64QUERYINFORMATIONPROCESS64)(
 	IN  ULONG  ProcessInformationClass,
 	OUT PVOID  ProcessInformation,
 	IN  ULONG  ProcessInformationLength,
-	OUT PULONG ReturnLength OPTIONAL);/*
+	OUT PULONG ReturnLength OPTIONAL);
+
+/*
 typedef NTSTATUS(NTAPI* LPFN_NTWOW64QUERYINFORMATIONPROCESS64)(
 	IN  HANDLE ProcessHandle,
 	IN  ULONG  ProcessInformationClass,
@@ -127,6 +129,7 @@ typedef NTSTATUS(NTAPI* LPFN_NTWOW64QUERYINFORMATIONPROCESS64)(
 	IN  ULONG  ProcessInformationLength,
 	OUT PULONG ReturnLength OPTIONAL);*/
 //extern LPFN_NTQUERYINFORMATIONPROCESS __NtQueryInformationProcess;
+
 
 
 typedef enum PROCESS_BIT {
@@ -172,6 +175,33 @@ CString FaGetPebAddress(HANDLE ProcessIdentify);
 CString FaGetProcessCommandLine(HANDLE ProcessIdentify);
 CString FaGetProcessCurrentDirectory(HANDLE ProcessIdentify);
 
+/************************************************************************/
+/*                                                                      */
+/************************************************************************/
+
+enum MODULE_SEACH_TYPE
+{
+	//TOOLHELPER
+	//NATIVEAPI
+	INLOADORDER,
+	SECTIONS,
+};
+
+typedef enum MODULE_BIT {
+	UNKNOW_MODULE,
+	X86_MODULE,
+	X64_MODULE
+}MODULE_BIT;
+
+typedef struct _MODULE_TABLE_ENTRY_INFO_
+{
+	ULONGLONG VirtualAddress;
+	ULONGLONG ViewSize;
+	TCHAR ModuleName[MAX_PATH];
+	TCHAR ModulePath[MAX_PATH];
+	MODULE_BIT ModuleBit;
+}MODULE_TABLE_ENTRY_INFO, * PMODULE_TABLE_ENTRY_INFO;
+
 
 PROCESS_BIT FaGetProcessBit(HANDLE ProcessIdentify);
 class _CProcessHelper
@@ -208,8 +238,12 @@ public:
 	BOOL FaReadProcessMemory(DWORD64 VirtualAddress, LPVOID BufferData, size_t ViewSize, DWORD64* NumberOfBytesRead = NULL);
 	BOOL FaReadProcessMemory(DWORD VirtualAddress, LPVOID BufferData, size_t ViewSize, DWORD64* NumberOfBytesRead = NULL);
 
+
 	template<typename T>
 	CString  FaGetProcessCommandLine_T();
+
+	template<typename T>
+	size_t FaRing3EnumProcessModuleList_T(vector<MODULE_TABLE_ENTRY_INFO>& ModuleTableEntryInfo, CString& StatusInfo);
 
 	/**
 	 * 一些功能函数
@@ -219,6 +253,7 @@ public:
 
 	BOOL FaEnumModules();
 
+	size_t FaRing3EnumProcessModules(vector<MODULE_TABLE_ENTRY_INFO>& ModuleTableEntryInfo, MODULE_SEACH_TYPE ModuleSeachType, CString& StatusInfo);
 
 protected:
 private:

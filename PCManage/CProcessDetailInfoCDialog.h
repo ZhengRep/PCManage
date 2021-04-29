@@ -31,4 +31,5 @@ public:
 
 public:
 	virtual BOOL OnInitDialog();
+	void FaEnumProcessModules(PPROCESS_TABLE_ENTRY_INFO ProcessTableEntryInfo);
 };
